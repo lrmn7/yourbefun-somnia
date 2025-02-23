@@ -22,7 +22,7 @@ const fakeMessages = [
 const Hero = () => {
   const [message, setMessage] = useState('')
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     if (e.target.value.length <= 32) {
       setMessage(e.target.value)
     }
