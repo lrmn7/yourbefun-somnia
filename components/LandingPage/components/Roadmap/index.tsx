@@ -65,7 +65,7 @@ const Roadmap = () => {
   return (
     <div className={styles.container}>
       <div className={styles.titleContainer}>
-        <div className={styles.title}>OUR GOALS</div>
+        <div className={styles.title}>Why We Do This</div>
 
         <div className={styles.secondaryTitle}>ROADMAP</div>
       </div>

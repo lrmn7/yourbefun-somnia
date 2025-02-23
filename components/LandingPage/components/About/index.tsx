@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 import styles from './styles.module.scss'
 
-import mHRobot from './assets/megahyped.webp'
+import mHRobot from './assets/somnia.gif'
 import robotShadow from './assets/shadow.svg'
 
 const About = () => {

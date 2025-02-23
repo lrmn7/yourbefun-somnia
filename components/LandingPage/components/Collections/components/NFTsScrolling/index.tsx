@@ -1,6 +1,6 @@
 import styles from './styles.module.scss'
 
-import all from './assets/all.webp'
+import all from './assets/all.png'
 
 import Image from 'next/image'
 

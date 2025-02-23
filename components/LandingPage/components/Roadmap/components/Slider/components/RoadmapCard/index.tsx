@@ -1,9 +1,8 @@
-import Image from 'next/image'
 import styles from './styles.module.scss'
-
+import Image, { StaticImageData } from 'next/image'
 interface CardProps {
-  title: string
-  secondaryTitle: string
+  title: string | StaticImageData
+  secondaryTitle: string | StaticImageData
   text: string
 }
 
