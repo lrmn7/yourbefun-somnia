@@ -27,12 +27,17 @@ const Team = () => {
         <div className={styles.teamGrid}>
           <div className={styles.member}>
             <div className={styles.nft}>
-              <Image src={thaurinos} alt='Thaurinos' className={styles.image} width={280} />
+              <Image
+                src={thaurinos}
+                alt="Thaurinos"
+                className={styles.image}
+                width={280}
+              />
             </div>
 
             <div className={styles.title}>
               <div className={styles.title}>
-                <Image src={thaurinosTitle} alt='Title'  width={120} />
+                <Image src={thaurinosTitle} alt="Title" width={120} />
               </div>
 
               <div className={styles.secondaryTitle}>Dev - Blockchain</div>
@@ -41,12 +46,17 @@ const Team = () => {
 
           <div className={styles.member}>
             <div className={styles.nft}>
-              <Image src={jaum} alt='Jaum' className={styles.image} width={280} />
+              <Image
+                src={jaum}
+                alt="Jaum"
+                className={styles.image}
+                width={280}
+              />
             </div>
 
             <div className={styles.title}>
               <div className={styles.title}>
-                <Image src={jaumTitle} alt='Title' width={100} />
+                <Image src={jaumTitle} alt="Title" width={100} />
               </div>
 
               <div className={styles.secondaryTitle}>Dev - Fullstack</div>
@@ -55,12 +65,17 @@ const Team = () => {
 
           <div className={styles.member}>
             <div className={styles.nft}>
-              <Image src={koroshy} alt='Koroshy' className={styles.image} width={280} />
+              <Image
+                src={koroshy}
+                alt="Koroshy"
+                className={styles.image}
+                width={280}
+              />
             </div>
 
             <div className={styles.title}>
               <div className={styles.title}>
-                <Image src={koroshyTitle} alt='Title'  width={150} />
+                <Image src={koroshyTitle} alt="Title" width={150} />
               </div>
 
               <div className={styles.secondaryTitle}>Artist - UI Design</div>
@@ -71,12 +86,17 @@ const Team = () => {
         <div className={styles.teamGrid2}>
           <div className={styles.member}>
             <div className={styles.nft}>
-              <Image src={nata} alt='Nata' className={styles.image} width={280} />
+              <Image
+                src={nata}
+                alt="Nata"
+                className={styles.image}
+                width={280}
+              />
             </div>
 
             <div className={styles.title}>
               <div className={styles.title}>
-                <Image src={nataTitle} alt='Title' width={90} />
+                <Image src={nataTitle} alt="Title" width={90} />
               </div>
 
               <div className={styles.secondaryTitle}>Marketing</div>
@@ -85,12 +105,12 @@ const Team = () => {
 
           <div className={styles.member}>
             <div className={styles.nft}>
-              <Image src={igu} alt='Igu' className={styles.image} width={280} />
+              <Image src={igu} alt="Igu" className={styles.image} width={280} />
             </div>
 
             <div className={styles.title}>
               <div className={styles.title}>
-                <Image src={iguTitle} alt='Title'  width={80} />
+                <Image src={iguTitle} alt="Title" width={80} />
               </div>
 
               <div className={styles.secondaryTitle}>Dev - Fullstack</div>

@@ -126,3 +126,88 @@
     transform: translateX(0px);
   }
 }
+
+/* Section Fun Message - Menyesuaikan posisi dengan elemen sebelumnya */
+.funMessageSection {
+  position: absolute;
+  top: 55%;
+  left: 40%; /* Ubah nilai ini untuk geser kiri/kanan */
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.funMessageInputContainer {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background: transparent;
+}
+
+.funMessageInput {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 1rem;
+  text-align: center;
+}
+
+  .funMessageButton {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    cursor: url('../../../../public/spray.png'), pointer;
+    padding: 0px 30px;
+    border-radius: 3px;
+    background: #5A5A5A4D;
+    transition: 0.4s;
+
+    &:hover {
+      background: #E72A70;
+    }
+  }
+
+.funMessageAlert {
+  margin-top: 1rem;
+  color: #ff0000;
+  font-size: 0.9rem;
+}
+
+/* Recent Messages */
+.recentMessagesContainer {
+  margin-top: 1.5rem;
+  width: 100%;
+  max-width: 450px; /* Lebar diperbesar agar pesan tidak terlalu terpotong */
+  padding: 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 16px; /* Round lebih besar */
+  background: transparent;
+}
+
+.recentMessagesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Setiap pesan */
+.recentMessagesList li {
+  padding: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.95rem;
+}
+
+/* Warna ID dan Address sama, Message beda */
+.recentMessagesList li strong {
+  color: #00c3ff; /* Biru untuk ID & Address */
+}
+
+.recentMessagesList li span {
+  color: #fff; /* Putih untuk pesan */
+}

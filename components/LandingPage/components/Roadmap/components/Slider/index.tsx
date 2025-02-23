@@ -19,46 +19,73 @@ import secondaryTitle7 from './assets/secondarytitle7.svg'
 SwiperCore.use([Autoplay])
 
 const Slider = () => {
-
   return (
     <div className={styles.container}>
       <div className={styles.grid}>
-      <Swiper
-      slidesPerView={3}
-      initialSlide={1}
-      loop={true}
-      autoplay={{ delay: 10000 }}
-      navigation={false}
-      direction='horizontal'
-      grabCursor={true}
-      centeredSlides={true}
-    >
-          <SwiperSlide>            
-            <RoadmapCard title={title} secondaryTitle={secondaryTitle1} text='Whitelist members minting: Mega Hyped OG Community Members and selected marketing partners will have exclusive access to the Mega Hyped NFTs limited by two MINTs per address. The whitelist price is 0.0333 ETH.' />
+        <Swiper
+          slidesPerView={3}
+          initialSlide={1}
+          loop={true}
+          autoplay={{ delay: 10000 }}
+          navigation={false}
+          direction="horizontal"
+          grabCursor={true}
+          centeredSlides={true}
+        >
+          <SwiperSlide>
+            <RoadmapCard
+              title={title}
+              secondaryTitle={secondaryTitle1}
+              text="Whitelist members minting: Mega Hyped OG Community Members and selected marketing partners will have exclusive access to the Mega Hyped NFTs limited by two MINTs per address. The whitelist price is 0.0333 ETH."
+            />
           </SwiperSlide>
 
-          <SwiperSlide>            
-            <RoadmapCard title={title} secondaryTitle={secondaryTitle2} text='Mega Hyped public mint opens, limited by five mints per wallet. The public mint will be closed 72 hours after its starting date. Mega Hyped public mint price is 0.045 ETH, limited to a 3333 total supply.' />
+          <SwiperSlide>
+            <RoadmapCard
+              title={title}
+              secondaryTitle={secondaryTitle2}
+              text="Mega Hyped public mint opens, limited by five mints per wallet. The public mint will be closed 72 hours after its starting date. Mega Hyped public mint price is 0.045 ETH, limited to a 3333 total supply."
+            />
           </SwiperSlide>
 
-          <SwiperSlide>            
-            <RoadmapCard title={title} secondaryTitle={secondaryTitle3} text='To avoid exploitation of the airdrop event, the Mega Hyped team will announce on our socials when a Snapshot. Holders can claim MHT tokens according to the number of Mega Hyped NFTs held by the time of the Snapshot.' />
+          <SwiperSlide>
+            <RoadmapCard
+              title={title}
+              secondaryTitle={secondaryTitle3}
+              text="To avoid exploitation of the airdrop event, the Mega Hyped team will announce on our socials when a Snapshot. Holders can claim MHT tokens according to the number of Mega Hyped NFTs held by the time of the Snapshot."
+            />
           </SwiperSlide>
 
-          <SwiperSlide>            
-            <RoadmapCard title={title} secondaryTitle={secondaryTitle4} text='The Mega Hyped DAO will start its operations by voting for the first project that will be incubated.' />
+          <SwiperSlide>
+            <RoadmapCard
+              title={title}
+              secondaryTitle={secondaryTitle4}
+              text="The Mega Hyped DAO will start its operations by voting for the first project that will be incubated."
+            />
           </SwiperSlide>
 
-          <SwiperSlide>            
-            <RoadmapCard title={title} secondaryTitle={secondaryTitle5} text='The Mega Hyped Team launches the Mega Hyped Auction House, where MHT token holders can bid for Whitelist Entries for the first Mega Hyped DAO-backed project.' />
+          <SwiperSlide>
+            <RoadmapCard
+              title={title}
+              secondaryTitle={secondaryTitle5}
+              text="The Mega Hyped Team launches the Mega Hyped Auction House, where MHT token holders can bid for Whitelist Entries for the first Mega Hyped DAO-backed project."
+            />
           </SwiperSlide>
 
-          <SwiperSlide>            
-            <RoadmapCard title={title} secondaryTitle={secondaryTitle6} text='During the year 2023, every project participating in the Mega Hyped accelerator program will donate a percentage of their initial mint to the Mega Hyped DAO. These NFTs will be available for purchase using MHT tokens on the Mega Hyped Marketplace.' />
+          <SwiperSlide>
+            <RoadmapCard
+              title={title}
+              secondaryTitle={secondaryTitle6}
+              text="During the year 2023, every project participating in the Mega Hyped accelerator program will donate a percentage of their initial mint to the Mega Hyped DAO. These NFTs will be available for purchase using MHT tokens on the Mega Hyped Marketplace."
+            />
           </SwiperSlide>
 
-          <SwiperSlide>            
-            <RoadmapCard title={title} secondaryTitle={secondaryTitle7} text='The Mega Hyped team is committed to giving its members access to high-quality projects. However, we can not guarantee that incubated projects strictly carry on their Roadmap according to their initial proposal. Suppose we identify that a project is going Rouge and do not honor its promises regarding NFT utility, Roadmap, or Tokenomics. We will open to holders that have held a Mega Hyped NFT for at least three months, a time window where they can burn an incubated NFT and get back an amount of MHT Tokens according to a rate predefined by the Mega Hyped DAO in advance.' />
+          <SwiperSlide>
+            <RoadmapCard
+              title={title}
+              secondaryTitle={secondaryTitle7}
+              text="The Mega Hyped team is committed to giving its members access to high-quality projects. However, we can not guarantee that incubated projects strictly carry on their Roadmap according to their initial proposal. Suppose we identify that a project is going Rouge and do not honor its promises regarding NFT utility, Roadmap, or Tokenomics. We will open to holders that have held a Mega Hyped NFT for at least three months, a time window where they can burn an incubated NFT and get back an amount of MHT Tokens according to a rate predefined by the Mega Hyped DAO in advance."
+            />
           </SwiperSlide>
         </Swiper>
       </div>

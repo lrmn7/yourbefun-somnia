@@ -12,29 +12,47 @@ const Footer = () => {
   return (
     <div className={styles.container}>
       <div className={styles.bgContainer}>
-        <div className={styles.titleContainer}>
-          JOIN OUR COMMUNITY
-        </div>
+        <div className={styles.titleContainer}>JOIN OUR COMMUNITY</div>
 
         <div className={styles.socialContainer}>
           <div className={styles.icon}>
-            <Image src={opensea} alt='Opensea' onClick={() => window.open('https://opensea.io/megahyped')} />
+            <Image
+              src={opensea}
+              alt="Opensea"
+              onClick={() => window.open('https://opensea.io/megahyped')}
+            />
           </div>
 
           <div className={styles.icon}>
-            <Image src={telegram} alt='Telegram' onClick={() => window.open('https://telegram.org/megahypednft')} />
+            <Image
+              src={telegram}
+              alt="Telegram"
+              onClick={() => window.open('https://telegram.org/megahypednft')}
+            />
           </div>
 
           <div className={styles.icon}>
-            <Image src={discord} alt='Discord' onClick={() => window.open('https://discord.gg/qRKn7fAeP6')} />
+            <Image
+              src={discord}
+              alt="Discord"
+              onClick={() => window.open('https://discord.gg/qRKn7fAeP6')}
+            />
           </div>
 
           <div className={styles.icon}>
-            <Image src={twitter} alt='Twitter' onClick={() => window.open('https://twitter.com/megahypednft')} />
+            <Image
+              src={twitter}
+              alt="Twitter"
+              onClick={() => window.open('https://twitter.com/megahypednft')}
+            />
           </div>
 
           <div className={styles.icon}>
-            <Image src={instagram} alt='Instagram' onClick={() => window.open('https://instagram.com/megahypednft')} />
+            <Image
+              src={instagram}
+              alt="Instagram"
+              onClick={() => window.open('https://instagram.com/megahypednft')}
+            />
           </div>
         </div>
 

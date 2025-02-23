@@ -23,10 +23,12 @@ const FAQCard: React.FC<FAQProps> = ({ question, answer }) => {
         <div className={styles.questionContainer}>
           <h3>{question}</h3>
 
-          <div className={`${styles.arrow} ${
-            activeIndex === 0 ? styles.arrowActive : ''
-          }`}>
-            <Image src={arrow} alt='Arrow' width={10}/>
+          <div
+            className={`${styles.arrow} ${
+              activeIndex === 0 ? styles.arrowActive : ''
+            }`}
+          >
+            <Image src={arrow} alt="Arrow" width={10} />
           </div>
         </div>
 

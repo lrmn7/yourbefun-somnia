@@ -12,36 +12,36 @@ import styles from './styles.module.scss'
 const LandingPage = () => {
   return (
     <div className={styles.container}>
-      <div id='navbar'>
+      <div id="navbar">
         <Navbar />
       </div>
 
-      <div id='hero'>
+      <div id="hero">
         <Hero />
       </div>
 
-      <div id='project'>
+      <div id="project">
         <About />
       </div>
 
-      <div id='gallery'>
+      <div id="gallery">
         <Collections />
       </div>
 
-      <div id='roadmap'>
+      <div id="roadmap">
         <Roadmap />
       </div>
 
-    {/*  <div id='team'>
+      {/*  <div id='team'>
         <Team />
       </div> 
       */}
 
-      <div id='FAQ'>
+      <div id="FAQ">
         <FAQ />
       </div>
 
-      <div id='community'>
+      <div id="community">
         <Footer />
       </div>
     </div>

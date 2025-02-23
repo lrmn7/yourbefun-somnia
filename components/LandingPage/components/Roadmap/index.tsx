@@ -10,7 +10,6 @@ import arrow3img from './assets/arrow3.svg'
 import arrow4img from './assets/arrow4.svg'
 
 const Roadmap = () => {
-
   let functions = [
     () => setArrow1(true),
     () => setArrow2(true),
@@ -56,46 +55,162 @@ const Roadmap = () => {
             setArrow8(false)
             setArrow9(false)
             setArrow10(false)
-          } 
+          }
         }, 2000)
       }
       handleArrow()
     }, 10000)
   }, [])
-  
+
   return (
     <div className={styles.container}>
       <div className={styles.titleContainer}>
-        <div className={styles.title}>
-          OUR GOALS
-        </div>
+        <div className={styles.title}>OUR GOALS</div>
 
-        <div className={styles.secondaryTitle}>
-          ROADMAP
-        </div>
+        <div className={styles.secondaryTitle}>ROADMAP</div>
       </div>
 
       <div className={styles.arrowContainer}>
-        <Image src={arrow1img} alt='Arrow' className={styles.img} /*style={arrow1 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/ />
-        <Image src={arrow2img} alt='Arrow' className={styles.img} /*style={arrow2 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/ />
-        <Image src={arrow3img} alt='Arrow' className={styles.img} /*style={arrow3 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/ />
-        <Image src={arrow4img} alt='Arrow' className={styles.img} /*style={arrow4 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/ />
-        <Image src={arrow1img} alt='Arrow' className={styles.img} /*style={arrow5 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/ />
-        <Image src={arrow3img} alt='Arrow' className={styles.img} /*style={arrow6 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/ />
-        <Image src={arrow1img} alt='Arrow' className={styles.img} /*style={arrow7 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/ />
-        <Image src={arrow4img} alt='Arrow' className={styles.img} /*style={arrow8 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/ />
-        <Image src={arrow2img} alt='Arrow' className={styles.img} /*style={arrow9 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/ />
-        <Image src={arrow4img} alt='Arrow' className={styles.img} /*style={arrow10 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/ />
-        <Image src={arrow1img} alt='Arrow' className={styles.img} /*style={arrow1 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/ />
-        <Image src={arrow2img} alt='Arrow' className={styles.img} /*style={arrow2 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/ />
-        <Image src={arrow3img} alt='Arrow' className={styles.img} /*style={arrow3 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/ />
-        <Image src={arrow4img} alt='Arrow' className={styles.img} /*style={arrow4 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/ />
-        <Image src={arrow1img} alt='Arrow' className={styles.img} /*style={arrow5 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/ />
-        <Image src={arrow3img} alt='Arrow' className={styles.img} /*style={arrow6 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/ />
-        <Image src={arrow1img} alt='Arrow' className={styles.img} /*style={arrow7 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/ />
-        <Image src={arrow4img} alt='Arrow' className={styles.img} /*style={arrow8 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/ />
-        <Image src={arrow2img} alt='Arrow' className={styles.img} /*style={arrow9 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/ />
-        <Image src={arrow4img} alt='Arrow' className={styles.img} /*style={arrow10 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/ />
+        <Image
+          src={arrow1img}
+          alt="Arrow"
+          className={
+            styles.img
+          } /*style={arrow1 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/
+        />
+        <Image
+          src={arrow2img}
+          alt="Arrow"
+          className={
+            styles.img
+          } /*style={arrow2 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/
+        />
+        <Image
+          src={arrow3img}
+          alt="Arrow"
+          className={
+            styles.img
+          } /*style={arrow3 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/
+        />
+        <Image
+          src={arrow4img}
+          alt="Arrow"
+          className={
+            styles.img
+          } /*style={arrow4 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/
+        />
+        <Image
+          src={arrow1img}
+          alt="Arrow"
+          className={
+            styles.img
+          } /*style={arrow5 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/
+        />
+        <Image
+          src={arrow3img}
+          alt="Arrow"
+          className={
+            styles.img
+          } /*style={arrow6 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/
+        />
+        <Image
+          src={arrow1img}
+          alt="Arrow"
+          className={
+            styles.img
+          } /*style={arrow7 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/
+        />
+        <Image
+          src={arrow4img}
+          alt="Arrow"
+          className={
+            styles.img
+          } /*style={arrow8 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/
+        />
+        <Image
+          src={arrow2img}
+          alt="Arrow"
+          className={
+            styles.img
+          } /*style={arrow9 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/
+        />
+        <Image
+          src={arrow4img}
+          alt="Arrow"
+          className={
+            styles.img
+          } /*style={arrow10 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/
+        />
+        <Image
+          src={arrow1img}
+          alt="Arrow"
+          className={
+            styles.img
+          } /*style={arrow1 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/
+        />
+        <Image
+          src={arrow2img}
+          alt="Arrow"
+          className={
+            styles.img
+          } /*style={arrow2 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/
+        />
+        <Image
+          src={arrow3img}
+          alt="Arrow"
+          className={
+            styles.img
+          } /*style={arrow3 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/
+        />
+        <Image
+          src={arrow4img}
+          alt="Arrow"
+          className={
+            styles.img
+          } /*style={arrow4 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/
+        />
+        <Image
+          src={arrow1img}
+          alt="Arrow"
+          className={
+            styles.img
+          } /*style={arrow5 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/
+        />
+        <Image
+          src={arrow3img}
+          alt="Arrow"
+          className={
+            styles.img
+          } /*style={arrow6 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/
+        />
+        <Image
+          src={arrow1img}
+          alt="Arrow"
+          className={
+            styles.img
+          } /*style={arrow7 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/
+        />
+        <Image
+          src={arrow4img}
+          alt="Arrow"
+          className={
+            styles.img
+          } /*style={arrow8 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/
+        />
+        <Image
+          src={arrow2img}
+          alt="Arrow"
+          className={
+            styles.img
+          } /*style={arrow9 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/
+        />
+        <Image
+          src={arrow4img}
+          alt="Arrow"
+          className={
+            styles.img
+          } /*style={arrow10 == true ? {filter: 'brightness(1.4)'} : {filter: 'brightness(1.0)'}}*/
+        />
       </div>
 
       <div className={styles.sliderContainer}>

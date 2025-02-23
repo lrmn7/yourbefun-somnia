@@ -10,7 +10,7 @@ const NFTsScrolling = () => {
       {/*images.map((image, index) => (
         <Image key={index} src={image} alt={`Image ${index + 1}`} className={styles.image} width={0.5} />
       ))*/}
-      <Image src={all} alt='NFTs' /> <Image src={all} alt='NFTs' />
+      <Image src={all} alt="NFTs" /> <Image src={all} alt="NFTs" />
     </div>
   )
 }
