@@ -127,12 +127,10 @@
   }
 }
 
-/* Section Fun Message - Menyesuaikan posisi dengan elemen sebelumnya */
 .funMessageSection {
   position: absolute;
-  top: 55%;
-  left: 40%; /* Ubah nilai ini untuk geser kiri/kanan */
-  transform: translate(-50%, -50%);
+  top: 30%;
+  left: -10%; /* Dari 40% menjadi 20% agar lebih ke kiri */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -140,7 +138,9 @@
   width: 100%;
 }
 
+
 .funMessageInputContainer {
+  position: relative;
   width: 100%;
   max-width: 400px;
   padding: 0.5rem;
@@ -151,6 +151,7 @@
 
 .funMessageInput {
   width: 100%;
+  padding-right: 40px; /* Biar ada space buat charIndicator */
   border: none;
   outline: none;
   background: transparent;
@@ -158,20 +159,36 @@
   text-align: center;
 }
 
-  .funMessageButton {
-    height: 40px;
-    display: flex;
-    align-items: center;
-    cursor: url('../../../../public/spray.png'), pointer;
-    padding: 0px 30px;
-    border-radius: 3px;
-    background: #5A5A5A4D;
-    transition: 0.4s;
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
 
-    &:hover {
-      background: #E72A70;
-    }
+.charIndicator {
+  position: absolute;
+  right: 10px;
+  color: gray;
+  font-size: 0.9rem;
+}
+
+
+.funMessageButton {
+  margin-top: 0.8rem;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  cursor: url('./assets/spray.png'), pointer;
+  padding: 0 30px;
+  border-radius: 3px;
+  background: rgba(90, 90, 90, 0.3);
+  transition: 0.4s;
+
+  &:hover {
+    background: #e72a70;
   }
+}
 
 .funMessageAlert {
   margin-top: 1rem;
@@ -183,10 +200,10 @@
 .recentMessagesContainer {
   margin-top: 1.5rem;
   width: 100%;
-  max-width: 450px; /* Lebar diperbesar agar pesan tidak terlalu terpotong */
+  max-width: 450px;
   padding: 1.2rem;
   border: 1px solid #ccc;
-  border-radius: 16px; /* Round lebih besar */
+  border-radius: 16px;
   background: transparent;
 }
 
@@ -196,18 +213,16 @@
   margin: 0;
 }
 
-/* Setiap pesan */
 .recentMessagesList li {
   padding: 8px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   font-size: 0.95rem;
 }
 
-/* Warna ID dan Address sama, Message beda */
 .recentMessagesList li strong {
-  color: #00c3ff; /* Biru untuk ID & Address */
+  color: #00c3ff;
 }
 
 .recentMessagesList li span {
-  color: #fff; /* Putih untuk pesan */
+  color: #fff;
 }

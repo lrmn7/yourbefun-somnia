@@ -1,12 +1,8 @@
+import { useState } from 'react'
 import styles from './styles.module.scss'
 
 const fakeMessages = [
   { id: 4966, address: '0xCD22...01a9', message: 'ekesitem nya herese"=' },
-  {
-    id: 4965,
-    address: '0x7ba2...baD2',
-    message: 'Get ready to dream big "Somnia"',
-  },
   { id: 4964, address: '0x6a5b...Af9b', message: 'hello' },
   { id: 4963, address: '0xf8a5...1319', message: 'Hello World!' },
   {
@@ -24,17 +20,18 @@ const fakeMessages = [
 ]
 
 const Hero = () => {
+  const [message, setMessage] = useState('')
+
+  const handleChange = (e) => {
+    if (e.target.value.length <= 32) {
+      setMessage(e.target.value)
+    }
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.gridContainer}>
         <div className={styles.blankContainer} />
-        <div className={styles.mintContainer}>
-          <div className={styles.widthContainer}>
-            <div className={styles.placeholder}>
-              {/* Bisa diganti teks atau dibiarkan kosong */}
-            </div>
-          </div>
-        </div>
       </div>
 
       <div className={styles.positionContainer}>
@@ -44,12 +41,18 @@ const Hero = () => {
       {/* Fun Message Section */}
       <div className={styles.funMessageSection}>
         <div className={styles.funMessageInputContainer}>
-          <input
-            type="text"
-            placeholder="Enter your fun message... (0/32)"
-            className={styles.funMessageInput}
-          />
+          <div className={styles.inputWrapper}>
+            <input
+              type="text"
+              placeholder="Enter your fun message..."
+              value={message}
+              onChange={handleChange}
+              className={styles.funMessageInput}
+            />
+            <span className={styles.charIndicator}>{message.length}/32</span>
+          </div>
         </div>
+
         <div className={styles.funMessageButton}>Connect</div>
         <div className={styles.funMessageAlert}>need 0.001 stt</div>
 
