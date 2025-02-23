@@ -2,8 +2,8 @@ import Image from 'next/image'
 
 import styles from './styles.module.scss'
 
-import logo from './assets/logo.svg'
-import discord from './assets/discord.svg'
+import logo from './assets/somnia-light.svg'
+import twitter from './assets/twitter.svg'
 
 const Navbar = () => {
   return (
@@ -13,34 +13,23 @@ const Navbar = () => {
           src={logo}
           alt="Logo"
           width={40}
-          onClick={() => window.open('#', '_self')}
+          onClick={() =>
+            window.open(
+              'https://shannon-explorer.somnia.network/address/0x59a6a33547C84E53ebd7f4B1155EF0c1fbF5584D',
+              '_blank',
+            )
+          }
         />
       </div>
 
-      <div className={styles.navigationContainer}>
-        <a className={styles.link} href="#about">
-          WTF is This?
-        </a>
-        <a className={styles.link} href="#roadmap">
-          Roadmap
-        </a>
-        <a className={styles.link} href="#team">
-          Team
-        </a>
-        <a className={styles.link} href="#team">
-          Meet the Dream Team
-        </a>
-        <a className={styles.link} href="#community">
-          Community
-        </a>
-      </div>
+      <div className={styles.navigationContainer}></div>
 
       <div className={styles.connectionsContainer}>
         <div
           className={styles.dcButton}
           onClick={() => window.open('https://discord.gg/qRKn7fAeP6', '_blank')}
         >
-          <Image src={discord} alt="Discord" width={30} />
+          <Image src={twitter} alt="Discord" width={30} />
         </div>
 
         <div className={styles.connectButton}>Connect</div>

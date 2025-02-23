@@ -1,12 +1,9 @@
 import Image from 'next/image'
-
 import styles from './styles.module.scss'
 
-import opensea from './assets/opensea.svg'
 import telegram from './assets/telegram.svg'
 import discord from './assets/discord.svg'
 import twitter from './assets/twitter.svg'
-import instagram from './assets/instagram.svg'
 
 const Footer = () => {
   return (
@@ -17,17 +14,11 @@ const Footer = () => {
         <div className={styles.socialContainer}>
           <div className={styles.icon}>
             <Image
-              src={opensea}
-              alt="Opensea"
-              onClick={() => window.open('https://opensea.io/megahyped')}
-            />
-          </div>
-
-          <div className={styles.icon}>
-            <Image
               src={telegram}
               alt="Telegram"
-              onClick={() => window.open('https://telegram.org/megahypednft')}
+              width={50}
+              height={50}
+              onClick={() => window.open('https://t.me/somnianetwork')}
             />
           </div>
 
@@ -35,7 +26,9 @@ const Footer = () => {
             <Image
               src={discord}
               alt="Discord"
-              onClick={() => window.open('https://discord.gg/qRKn7fAeP6')}
+              width={40}
+              height={40}
+              onClick={() => window.open('https://discord.gg/somnia')}
             />
           </div>
 
@@ -43,22 +36,14 @@ const Footer = () => {
             <Image
               src={twitter}
               alt="Twitter"
-              onClick={() => window.open('https://twitter.com/megahypednft')}
-            />
-          </div>
-
-          <div className={styles.icon}>
-            <Image
-              src={instagram}
-              alt="Instagram"
-              onClick={() => window.open('https://instagram.com/megahypednft')}
+              width={40}
+              height={40}
+              onClick={() => window.open('https://x.com/Somnia_Network')}
             />
           </div>
         </div>
 
-        <div className={styles.copyrightContainer}>
-          COPYRIGHT © 2022 MEGAHYPED
-        </div>
+        <div className={styles.copyrightContainer}>Made with ♥ in Bogor</div>
       </div>
     </div>
   )
