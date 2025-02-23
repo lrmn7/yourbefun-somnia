@@ -3,6 +3,9 @@ import styles from './styles.module.scss'
 
 const fakeMessages = [
   { id: 4966, address: '0xCD22...01a9', message: 'ekesitem nya herese"=' },
+  { id: 4966, address: '0xCD22...01a9', message: 'ekesitem nya herese"=' },
+  { id: 4966, address: '0xCD22...01a9', message: 'ekesitem nya herese"=' },
+  { id: 4966, address: '0xCD22...01a9', message: 'ekesitem nya herese"=' },
   { id: 4964, address: '0x6a5b...Af9b', message: 'hello' },
   { id: 4963, address: '0xf8a5...1319', message: 'Hello World!' },
   {

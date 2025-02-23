@@ -130,7 +130,7 @@
 .funMessageSection {
   position: absolute;
   top: 30%;
-  left: -10%; /* Dari 40% menjadi 20% agar lebih ke kiri */
+  left: -10%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -142,16 +142,16 @@
 .funMessageInputContainer {
   position: relative;
   width: 100%;
-  max-width: 400px;
-  padding: 0.5rem;
+  max-width: 500px;
+  padding: 0.8rem;
   border: 1px solid #ccc;
-  border-radius: 12px;
+  border-radius: 20px;
   background: transparent;
 }
 
 .funMessageInput {
   width: 100%;
-  padding-right: 40px; /* Biar ada space buat charIndicator */
+  padding-right: 40px;
   border: none;
   outline: none;
   background: transparent;
@@ -198,14 +198,19 @@
 
 /* Recent Messages */
 .recentMessagesContainer {
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   width: 100%;
-  max-width: 450px;
-  padding: 1.2rem;
-  border: 1px solid #ccc;
-  border-radius: 16px;
+  max-width: 600px;
+  padding: 1.5rem;
+  border: 1px solid #333232;
+  border-radius: 20px;
   background: transparent;
+  
+  /* Masking untuk meredupkan border dari bawah ke atas */
+  -webkit-mask-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgb(116, 112, 112) 50%);
+  mask-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgb(141, 134, 134) 100%);
 }
+
 
 .recentMessagesList {
   list-style: none;
