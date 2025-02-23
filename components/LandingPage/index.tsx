@@ -20,11 +20,11 @@ const LandingPage = () => {
         <Hero />
       </div>
 
-      <div id="project">
+      <div id="about">
         <About />
       </div>
 
-      <div id="gallery">
+      <div id="team">
         <Collections />
       </div>
 
@@ -37,9 +37,10 @@ const LandingPage = () => {
       </div> 
       */}
 
-      <div id="FAQ">
+      {/*  <div id="FAQ">
         <FAQ />
       </div>
+      */}
 
       <div id="community">
         <Footer />

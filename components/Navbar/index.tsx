@@ -18,8 +18,8 @@ const Navbar = () => {
       </div>
 
       <div className={styles.navigationContainer}>
-        <a className={styles.link} href="#project">
-          Project
+        <a className={styles.link} href="#about">
+          WTF is This?
         </a>
         <a className={styles.link} href="#roadmap">
           Roadmap
@@ -27,8 +27,8 @@ const Navbar = () => {
         <a className={styles.link} href="#team">
           Team
         </a>
-        <a className={styles.link} href="#gallery">
-          Gallery
+        <a className={styles.link} href="#team">
+          Meet the Dream Team
         </a>
         <a className={styles.link} href="#community">
           Community

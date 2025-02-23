@@ -11,21 +11,25 @@ const About = () => {
       <div className={styles.widthLimiter}>
         <div className={styles.centerContainer}>
           <div className={styles.titleContainer}>
-            <div className={styles.title}>ABOUT THE PROJECT</div>
+            <div className={styles.title}>Get to Know LRMN</div>
 
-            <div className={styles.secondaryTitle}>MEGAHYPED</div>
+            <div className={styles.secondaryTitle}>
+              Drop a Message, Flex Your STT!
+            </div>
           </div>
         </div>
 
         <div className={styles.descriptionContainer}>
-          Mega Hyped is a collection of 3333 unique hand-drawn NFTs. Mega Hyped
-          NFT holders will be enablers of a community-driven acceleration
-          platform for creators and artists.
+          Send fun messages using SOMNIA TESTNET TOKEN (STT) on the Somnia
+          testnet! Just drop 0.001 STT, and your message goes straight to the
+          &quot;Recently Fun Messages&quot; list for everyone to see. This site
+          is all about experimenting, vibing, and having fun while testing smart
+          contract interactions. So go ahead—send it, flex it, and keep
+          exploring!
           <br />
           <br />
-          Mega Hyped NFT holders are entitled to 1000 units of Mega Hyped Tokens
-          (MHT), an ERC20-compliant utility token with Max. Supply of 3333000
-          will be distributed 90 days after the public minting event.
+          Big shoutout to Somnia Network for making this possible and Quills for
+          the inspiration! Keep exploring, keep having fun!
         </div>
 
         <div className={styles.listContainer}>
@@ -41,19 +45,19 @@ const About = () => {
           <div className={styles.rightSide}>
             <ul>
               <li>
-                Bid for Whitelist Entries for future projects vetted and backed
-                by the Mega Hyped DAO on a Whitelist Auction;
+                All messages sent through LRMN are recorded on the blockchain
+                and cannot be edited or deleted. Once it’s on-chain, it stays
+                there forever, so think carefully before sending a message!
               </li>
               <li>
-                Mega Hyped DAO will maintain an exclusive marketplace where a
-                percentage of the NFTs of our incubated projects will be
-                available for sale exclusively for MHT tokens;
+                LRMN does not collect, store, or track any personal data. Your
+                interactions are purely on-chain, and we do not have access to
+                your private information.
               </li>
               <li>
-                MHT tokens count towards DAO voting events. The DAO will choose
-                the projects incubated by the Mega Hyped DAO; These projects are
-                pre-selected by a throughout vetting process and KYC conducted
-                by the Mega Hyped Ambassadors and the Metamath Studios Team.
+                Since LRMN operates on a public blockchain, anyone can view your
+                messages and wallet address. While this ensures transparency,
+                always be mindful of what you share!
               </li>
             </ul>
           </div>
@@ -61,19 +65,17 @@ const About = () => {
 
         <div className={styles.cardContainer}>
           <div className={styles.text}>
-            * 40% of the funds raised by Myga Hyped&apos;s Initial Mint Event
-            will be dedicated to the promotion, marketing, and tutoring of
-            projects backed by the Mega Hyped DAO
+            * LRMN is a testnet experiment for fun and exploration. Messages
+            sent using SOMNIA TESTNET TOKEN (STT) have no real-world value and
+            are purely for testing smart contract interactions on the Somnia
+            network. We&apos;re not responsible for user-submitted messages—so
+            keep it cool and have fun testing!
           </div>
 
           <div className={styles.text}>
-            * The Mega Hyped team will pre-mint 233 NFTs; these NFTs will be
-            used to incentivize marketing and promotion, award ambassadors and
-            developers, and fund community giveaways. By the third month after
-            the public minting. If by the 90th day after public minting, any of
-            these 233 NFTs are still under the Mega Hyped teams&apos; wallet,
-            the Mega Hyped DAO will be able to vote on what to do with the
-            outstanding balance.
+            * Security Reminder: We will never ask for your private key or seed
+            phrase. Keep your wallet secure and always verify the smart contract
+            you’re interacting with. Stay safe and enjoy the testnet!
           </div>
         </div>
       </div>

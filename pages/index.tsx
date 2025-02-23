@@ -6,10 +6,13 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Megahyped</title>
-        <meta name="description" content="Megahyped NFT official website." />
+        <title>L RMN - Drop a Message, Flex Your STT</title>
+        <meta
+          name="description"
+          content="L RMN - Drop a Message, Flex Your STT"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/vector.ico" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <LandingPage />

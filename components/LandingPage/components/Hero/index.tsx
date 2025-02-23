@@ -56,8 +56,8 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className={styles.funMessageButton}>Connect</div>
-        <div className={styles.funMessageAlert}>need 0.001 stt</div>
+        <div className={styles.funMessageButton}>Blast a Message</div>
+        <div className={styles.funMessageAlert}>(0.001 STT)</div>
 
         {/* Recent Messages */}
         <div className={styles.recentMessagesContainer}>
