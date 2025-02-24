@@ -57,11 +57,11 @@ const Hero = () => {
       )
 
       const data = await contract.getLastMessages()
-      const totalMessages = data.length
+      const totalMessages = await contract.totalMessages()
 
       setMessages(
         data.map((m: any, index: number) => ({
-          id: totalMessages - index - 1,
+          id: Number(totalMessages) + data.length - index,
           address: m.sender,
           message: m.message,
         })),
@@ -169,7 +169,7 @@ const Hero = () => {
         <div className={styles.recentMessagesContainer}>
           <h3>Fresh Off the Keyboard</h3>
           <ul className={styles.recentMessagesList}>
-            {messages.slice(0, 10).map(({ id, address, message }) => (
+            {messages.map(({ id, address, message }) => (
               <li key={id}>
                 <strong>
                   [{id}] {address.slice(0, 6)}...{address.slice(-4)}:
