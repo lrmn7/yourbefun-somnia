@@ -80,6 +80,18 @@ const Hero = () => {
     if (window.ethereum) {
       const provider = new ethers.BrowserProvider(window.ethereum)
       const signer = await provider.getSigner()
+      const network = await provider.getNetwork()
+
+      if (network.chainId !== BigInt(50312)) {
+        setErrorMessage('You are not connected to Somnia Network Testnet!')
+        setShowErrorPopup(true)
+        setTimeout(() => {
+          setShowErrorPopup(false)
+          setErrorMessage(null)
+        }, 5000)
+        return
+      }
+
       const contract = new ethers.Contract(contractAddress, contractABI, signer)
 
       try {
