@@ -1,7 +1,19 @@
 {
   "name": "lrmn-fun-messages",
   "version": "0.1.0",
+  "description": "Drop a Message, Flex Your STT!",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lrmn7/somnia-fun-messages.git"
+  },
+  "keywords": [
+    "fun messages",
+    "smart contract",
+    "web3"
+  ],
+  "author": "lrmn7",
+  "license": "AGPL-3.0-or-later",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
