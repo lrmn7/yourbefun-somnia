@@ -48,11 +48,6 @@ const About = () => {
                 interactions are purely on-chain, and we do not have access to
                 your private information.
               </li>
-              <li>
-                Since LRMN operates on a public blockchain, anyone can view your
-                messages and wallet address. While this ensures transparency,
-                always be mindful of what you share!
-              </li>
             </ul>
           </div>
         </div>

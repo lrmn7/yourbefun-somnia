@@ -69,7 +69,7 @@ const Hero = () => {
   const sendMessage = async () => {
     if (!message.trim()) {
       setShowPopup(true)
-      setTimeout(() => setShowPopup(false), 2000)
+      setTimeout(() => setShowPopup(false), 5000)
       return
     }
 
@@ -96,7 +96,7 @@ const Hero = () => {
         setTimeout(() => {
           setShowErrorPopup(false)
           setErrorMessage(null)
-        }, 3000)
+        }, 5000)
       } finally {
         setIsSending(false)
       }
@@ -130,7 +130,7 @@ const Hero = () => {
           <div className={styles.inputWrapper}>
             <input
               type="text"
-              placeholder="Enter your fun message..."
+              placeholder="Type something cool..."
               value={message}
               onChange={(e) => setMessage(e.target.value.slice(0, 32))}
               className={styles.funMessageInput}
@@ -150,7 +150,7 @@ const Hero = () => {
         <div className={styles.funMessageAlert}>(0.001 STT)</div>
 
         <div className={styles.recentMessagesContainer}>
-          <h3>Recent Fun Messages</h3>
+          <h3>Fresh Off the Keyboard</h3>
           <ul className={styles.recentMessagesList}>
             {messages.slice(0, 10).map(({ id, address, message }) => (
               <li key={id}>
