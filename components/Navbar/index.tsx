@@ -27,12 +27,12 @@ const Navbar = () => {
       <div className={styles.connectionsContainer}>
         <div
           className={styles.dcButton}
-          onClick={() => window.open('https://discord.gg/qRKn7fAeP6', '_blank')}
+          onClick={() => window.open('https://x.com/romanromannya', '_blank')}
         >
-          <Image src={twitter} alt="Discord" width={30} />
+          <Image src={twitter} alt="Twitter-x" width={30} />
         </div>
 
-        <div className={styles.connectButton}>Connect</div>
+        <div className={styles.connectButton}>Connect Wallet</div>
       </div>
     </div>
   )
