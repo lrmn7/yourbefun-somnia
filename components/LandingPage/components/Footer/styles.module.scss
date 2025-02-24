@@ -37,7 +37,7 @@
 
       .icon {
         transition: 0.2s;
-        cursor: url('../../../../public/spray.png'), pointer;
+        cursor: url('../../../../public/cursor1.png'), pointer;
 
         &:hover {
           filter: brightness(0.8);
@@ -45,7 +45,7 @@
 
         img {
           width: 80%;
-          cursor: url('../../../../public/spray.png'), pointer;
+          cursor: url('../../../../public/cursor1.png'), pointer;
         }
       }
     }

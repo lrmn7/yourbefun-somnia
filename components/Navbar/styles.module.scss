@@ -9,7 +9,7 @@
     align-items: center;
 
     img {
-      cursor: url('../../public/spray.png'), pointer;
+      cursor: url('../../public/cursor1.png'), pointer;
     }
   }
 
@@ -20,7 +20,7 @@
     justify-content: center;
 
     .link {
-      cursor: url('../../public/spray.png'), pointer;
+      cursor: url('../../public/cursor1.png'), pointer;
       transition: 0.4s;
 
       &:hover {
@@ -43,14 +43,14 @@
       height: 40px;
       display: flex;
       align-items: center;
-      cursor: url('../../public/spray.png'), pointer;
+      cursor: url('../../public/cursor1.png'), pointer;
       padding: 0px 7px;
       border-radius: 3px;
       background: #5A5A5A4D;
       transition: 0.4s;
 
       img {
-        cursor: url('../../public/spray.png'), pointer;
+        cursor: url('../../public/cursor1.png'), pointer;
       }
 
       &:hover {
@@ -62,7 +62,7 @@
       height: 40px;
       display: flex;
       align-items: center;
-      cursor: url('../../public/spray.png'), pointer;
+      cursor: url('../../public/cursor1.png'), pointer;
       padding: 0px 30px;
       border-radius: 3px;
       background: #5A5A5A4D;
