@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { ethers } from 'ethers'
 import styles from './styles.module.scss'
-import contractABI from './ABI.json' // ✅ Perbaiki import
+import contractABI from './ABI.json'
 
 const contractAddress = '0xC7db42854266939dEf416d043d1C7c50Ee7ea8a4'
 
@@ -20,8 +20,10 @@ interface Message {
 
 const Hero = () => {
   const [message, setMessage] = useState('')
-  const [messages, setMessages] = useState<Message[]>([]) // ✅ Tipe array Message
-  const [account, setAccount] = useState<string | null>(null) // ✅ Tipe string | null
+  const [messages, setMessages] = useState<Message[]>([])
+  const [account, setAccount] = useState<string | null>(null)
+  const [showPopup, setShowPopup] = useState(false)
+  const [isSending, setIsSending] = useState(false)
 
   useEffect(() => {
     connectWallet()
@@ -32,7 +34,7 @@ const Hero = () => {
     if (window.ethereum) {
       const provider = new ethers.BrowserProvider(window.ethereum)
       const signer = await provider.getSigner()
-      setAccount(await signer.getAddress()) // ✅ Tidak error lagi
+      setAccount(await signer.getAddress())
     }
   }
 
@@ -46,7 +48,7 @@ const Hero = () => {
       )
 
       try {
-        const data = await contract.getLastMessages() // ✅ Gunakan fungsi yang benar
+        const data = await contract.getLastMessages()
         setMessages(
           data.map((m: Message, index: number) => ({
             id: index,
@@ -61,21 +63,31 @@ const Hero = () => {
   }
 
   const sendMessage = async () => {
-    if (!message) return
+    if (!message.trim()) {
+      setShowPopup(true)
+      setTimeout(() => setShowPopup(false), 2000) // Popup menghilang setelah 2 detik
+      return
+    }
+
     if (window.ethereum) {
       const provider = new ethers.BrowserProvider(window.ethereum)
       const signer = await provider.getSigner()
       const contract = new ethers.Contract(contractAddress, contractABI, signer)
 
       try {
+        setIsSending(true) // Tombol disabled dan berubah teks
+
         const tx = await contract.sendMessage(message, {
-          value: ethers.parseEther('0.001'), // ✅ Ethers v6
+          value: ethers.parseEther('0.001'),
         })
         await tx.wait()
+
         setMessage('')
         fetchMessages()
       } catch (error) {
         console.error('Error sending message:', error)
+      } finally {
+        setIsSending(false) // Tombol aktif kembali setelah transaksi selesai
       }
     }
   }
@@ -92,6 +104,13 @@ const Hero = () => {
 
       <div className={styles.funMessageSection}>
         <div className={styles.funMessageInputContainer}>
+          {/* Popup Error */}
+          {showPopup && (
+            <div className={`${styles.popupError} ${styles.show}`}>
+              Please enter a fun message!
+            </div>
+          )}
+
           <div className={styles.inputWrapper}>
             <input
               type="text"
@@ -104,9 +123,15 @@ const Hero = () => {
           </div>
         </div>
 
-        <button onClick={sendMessage} className={styles.funMessageButton}>
-          Blast a Message
+        {/* Tombol dengan perubahan status saat loading */}
+        <button
+          onClick={sendMessage}
+          className={styles.funMessageButton}
+          disabled={isSending}
+        >
+          {isSending ? 'Please Wait...' : 'Blast a Message'}
         </button>
+
         <div className={styles.funMessageAlert}>(0.001 STT)</div>
 
         <div className={styles.recentMessagesContainer}>
