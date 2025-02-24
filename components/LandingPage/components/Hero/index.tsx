@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { ethers } from 'ethers'
 import styles from './styles.module.scss'
-import contractABI from './ABI.json'
+import contractABI from './SmartContractAbi.json'
 
 const contractAddress = '0xC7db42854266939dEf416d043d1C7c50Ee7ea8a4'
 
@@ -23,7 +23,7 @@ const Hero = () => {
   const [messages, setMessages] = useState<Message[]>([])
   const [account, setAccount] = useState<string | null>(null)
   const [showPopup, setShowPopup] = useState(false)
-  const [showErrorPopup, setShowErrorPopup] = useState(false) // State baru untuk error transaksi
+  const [showErrorPopup, setShowErrorPopup] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [isSending, setIsSending] = useState(false)
 
@@ -51,9 +51,11 @@ const Hero = () => {
 
       try {
         const data = await contract.getLastMessages()
+        const totalMessages = data.length
+
         setMessages(
           data.map((m: Message, index: number) => ({
-            id: index,
+            id: totalMessages - index - 1,
             address: m.sender,
             message: m.message,
           })),
@@ -67,7 +69,7 @@ const Hero = () => {
   const sendMessage = async () => {
     if (!message.trim()) {
       setShowPopup(true)
-      setTimeout(() => setShowPopup(false), 2000) // Popup menghilang setelah 2 detik
+      setTimeout(() => setShowPopup(false), 2000)
       return
     }
 
@@ -77,7 +79,7 @@ const Hero = () => {
       const contract = new ethers.Contract(contractAddress, contractABI, signer)
 
       try {
-        setIsSending(true) // Tombol disabled dan berubah teks
+        setIsSending(true)
 
         const tx = await contract.sendMessage(message, {
           value: ethers.parseEther('0.001'),
@@ -88,17 +90,15 @@ const Hero = () => {
         fetchMessages()
       } catch (error: any) {
         console.error('Error sending message:', error)
-
-        // Set pesan error transaksi
         setErrorMessage(error.reason || 'Transaction failed! Please try again.')
         setShowErrorPopup(true)
 
         setTimeout(() => {
           setShowErrorPopup(false)
           setErrorMessage(null)
-        }, 3000) // Popup error transaksi muncul selama 3 detik
+        }, 3000)
       } finally {
-        setIsSending(false) // Tombol aktif kembali setelah transaksi selesai
+        setIsSending(false)
       }
     }
   }
@@ -115,14 +115,12 @@ const Hero = () => {
 
       <div className={styles.funMessageSection}>
         <div className={styles.funMessageInputContainer}>
-          {/* Popup Error untuk Input Kosong */}
           {showPopup && (
             <div className={`${styles.popupError} ${styles.show}`}>
               Please enter a fun message!
             </div>
           )}
 
-          {/* Popup Error untuk Transaksi Gagal */}
           {showErrorPopup && errorMessage && (
             <div className={`${styles.popupError} ${styles.show}`}>
               {errorMessage}
@@ -141,7 +139,6 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Tombol dengan perubahan status saat loading */}
         <button
           onClick={sendMessage}
           className={styles.funMessageButton}

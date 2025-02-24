@@ -235,10 +235,10 @@
 
 .popupError {
   position: absolute;
-  top: -80px; // Agar muncul di atas input
+  top: -80px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: red;
+  background-color: rgb(230, 59, 59);
   color: white;
   padding: 8px 25px;
   border-radius: 20px;

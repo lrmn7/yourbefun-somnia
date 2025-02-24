@@ -13,12 +13,7 @@ const Navbar = () => {
           src={logo}
           alt="Logo"
           width={40}
-          onClick={() =>
-            window.open(
-              'https://shannon-explorer.somnia.network/address/0x59a6a33547C84E53ebd7f4B1155EF0c1fbF5584D',
-              '_blank',
-            )
-          }
+          onClick={() => window.open('https://somnia.network/', '_blank')}
         />
       </div>
 

@@ -2,8 +2,7 @@ import Image from 'next/image'
 
 import styles from './styles.module.scss'
 
-import mHRobot from './assets/somnia.gif'
-import robotShadow from './assets/shadow.svg'
+import Somnia from './assets/somnia.gif'
 
 const About = () => {
   return (
@@ -34,12 +33,7 @@ const About = () => {
 
         <div className={styles.listContainer}>
           <div className={styles.leftSide}>
-            <Image
-              src={mHRobot}
-              alt="MegaRobot"
-              fill
-              className={styles.image}
-            />
+            <Image src={Somnia} alt="Somnia" fill className={styles.image} />
           </div>
 
           <div className={styles.rightSide}>
