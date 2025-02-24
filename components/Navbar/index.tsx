@@ -27,7 +27,19 @@ const Navbar = () => {
           <Image src={twitter} alt="Twitter-x" width={30} />
         </div>
 
-        <div className={styles.connectButton}>Connect Wallet</div>
+        <div
+          className={styles.connectButton}
+          role="button"
+          tabIndex={0}
+          onClick={() =>
+            window.open(
+              'https://shannon-explorer.somnia.network/address/0xC7db42854266939dEf416d043d1C7c50Ee7ea8a4',
+              '_blank',
+            )
+          }
+        >
+          Somnia Explorer
+        </div>
       </div>
     </div>
   )

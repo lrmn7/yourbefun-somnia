@@ -10,7 +10,7 @@ const About = () => {
       <div className={styles.widthLimiter}>
         <div className={styles.centerContainer}>
           <div className={styles.titleContainer}>
-            <div className={styles.title}>Get to Know LRMN</div>
+            <div className={styles.title}>Get to Know?</div>
 
             <div className={styles.secondaryTitle}>
               Drop a Message, Flex Your STT!
