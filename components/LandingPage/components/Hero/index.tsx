@@ -23,6 +23,8 @@ const Hero = () => {
   const [messages, setMessages] = useState<Message[]>([])
   const [account, setAccount] = useState<string | null>(null)
   const [showPopup, setShowPopup] = useState(false)
+  const [showErrorPopup, setShowErrorPopup] = useState(false) // State baru untuk error transaksi
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [isSending, setIsSending] = useState(false)
 
   useEffect(() => {
@@ -84,8 +86,17 @@ const Hero = () => {
 
         setMessage('')
         fetchMessages()
-      } catch (error) {
+      } catch (error: any) {
         console.error('Error sending message:', error)
+
+        // Set pesan error transaksi
+        setErrorMessage(error.reason || 'Transaction failed! Please try again.')
+        setShowErrorPopup(true)
+
+        setTimeout(() => {
+          setShowErrorPopup(false)
+          setErrorMessage(null)
+        }, 3000) // Popup error transaksi muncul selama 3 detik
       } finally {
         setIsSending(false) // Tombol aktif kembali setelah transaksi selesai
       }
@@ -104,10 +115,17 @@ const Hero = () => {
 
       <div className={styles.funMessageSection}>
         <div className={styles.funMessageInputContainer}>
-          {/* Popup Error */}
+          {/* Popup Error untuk Input Kosong */}
           {showPopup && (
             <div className={`${styles.popupError} ${styles.show}`}>
               Please enter a fun message!
+            </div>
+          )}
+
+          {/* Popup Error untuk Transaksi Gagal */}
+          {showErrorPopup && errorMessage && (
+            <div className={`${styles.popupError} ${styles.show}`}>
+              {errorMessage}
             </div>
           )}
 
@@ -140,7 +158,7 @@ const Hero = () => {
             {messages.slice(0, 10).map(({ id, address, message }) => (
               <li key={id}>
                 <strong>
-                  [{id}] {address}:
+                  [{id}] {address.slice(0, 6)}...{address.slice(-4)}:
                 </strong>{' '}
                 <span>{message}</span>
               </li>
