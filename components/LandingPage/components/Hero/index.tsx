@@ -15,7 +15,6 @@ interface Message {
   id: number
   address: string
   message: string
-  sender: string
 }
 
 const Hero = () => {
@@ -30,6 +29,8 @@ const Hero = () => {
   useEffect(() => {
     connectWallet()
     fetchMessages()
+    const interval = setInterval(fetchMessages, 5000) // Polling setiap 5 detik
+    return () => clearInterval(interval) // Hentikan polling saat komponen unmount
   }, [])
 
   const connectWallet = async () => {
