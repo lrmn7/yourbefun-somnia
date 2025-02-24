@@ -35,34 +35,38 @@ const Hero = () => {
   const connectWallet = async () => {
     if (window.ethereum) {
       const provider = new ethers.BrowserProvider(window.ethereum)
-      const signer = await provider.getSigner()
-      setAccount(await signer.getAddress())
+      const accounts = await window.ethereum.request({ method: 'eth_accounts' })
+
+      if (accounts.length > 0) {
+        const signer = await provider.getSigner()
+        setAccount(await signer.getAddress())
+      }
     }
   }
 
   const fetchMessages = async () => {
-    if (window.ethereum) {
-      const provider = new ethers.BrowserProvider(window.ethereum)
+    try {
+      const provider = new ethers.JsonRpcProvider(
+        'https://dream-rpc.somnia.network',
+      )
       const contract = new ethers.Contract(
         contractAddress,
         contractABI,
         provider,
       )
 
-      try {
-        const data = await contract.getLastMessages()
-        const totalMessages = data.length
+      const data = await contract.getLastMessages()
+      const totalMessages = data.length
 
-        setMessages(
-          data.map((m: Message, index: number) => ({
-            id: totalMessages - index - 1,
-            address: m.sender,
-            message: m.message,
-          })),
-        )
-      } catch (error) {
-        console.error('Error fetching messages:', error)
-      }
+      setMessages(
+        data.map((m: any, index: number) => ({
+          id: totalMessages - index - 1,
+          address: m.sender,
+          message: m.message,
+        })),
+      )
+    } catch (error) {
+      console.error('Error fetching messages:', error)
     }
   }
 
