@@ -61,7 +61,7 @@ const Hero = () => {
 
       setMessages(
         data.map((m: any, index: number) => ({
-          id: Number(totalMessages) + data.length - index,
+          id: Number(totalMessages) - index,
           address: m.sender,
           message: m.message,
         })),
