@@ -133,7 +133,7 @@ const Hero = () => {
         <div className={styles.funMessageInputContainer}>
           {showPopup && (
             <div className={`${styles.popupError} ${styles.show}`}>
-              Please enter a fun message!
+              Please type something cool first!
             </div>
           )}
 
