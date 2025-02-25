@@ -72,7 +72,7 @@ const Navbar = () => {
                     }
                     className={styles.connectButton}
                   >
-                    SOMNIA EXPLORE
+                    Somnia Explorer
                   </button>
                 )}
               </>
