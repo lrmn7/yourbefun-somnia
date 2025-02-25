@@ -42,16 +42,7 @@ const Navbar = () => {
 
             return (
               <>
-                <button
-                  onClick={connected ? openAccountModal : openConnectModal}
-                  className={styles.connectButton}
-                >
-                  {connected
-                    ? `${account.address.slice(0, 6)}...${account.address.slice(-4)}`
-                    : 'Connect Wallet'}
-                </button>
-
-                {/* Button jaringan dengan popup */}
+                {/* Button jaringan dengan popup (sekarang di atas tombol connect) */}
                 {connected && (
                   <button
                     onClick={openChainModal}
@@ -61,12 +52,21 @@ const Navbar = () => {
                   </button>
                 )}
 
+                <button
+                  onClick={connected ? openAccountModal : openConnectModal}
+                  className={styles.connectButton}
+                >
+                  {connected
+                    ? `${account.address.slice(0, 6)}...${account.address.slice(-4)}`
+                    : 'Connect Wallet'}
+                </button>
+
                 {/* Tombol SOMNIA EXPLORE */}
                 {connected && (
                   <button
                     onClick={() =>
                       window.open(
-                        'https://somnia-testnet.socialscan.io/',
+                        'https://somnia-testnet.socialscan.io/address/0xc7db42854266939def416d043d1c7c50ee7ea8a4',
                         '_blank',
                       )
                     }
