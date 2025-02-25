@@ -1,5 +1,5 @@
 import Image from 'next/image'
-
+import { ConnectButton } from '@rainbow-me/rainbowkit'
 import styles from './styles.module.scss'
 
 import logo from './assets/somnia-light.svg'
@@ -27,19 +27,43 @@ const Navbar = () => {
           <Image src={twitter} alt="Twitter-x" width={30} />
         </div>
 
-        <div
-          className={styles.connectButton}
-          role="button"
-          tabIndex={0}
-          onClick={() =>
-            window.open(
-              'https://shannon-explorer.somnia.network/address/0xC7db42854266939dEf416d043d1C7c50Ee7ea8a4',
-              '_blank',
+        {/* Custom ConnectButton */}
+        <ConnectButton.Custom>
+          {({
+            account,
+            chain,
+            openConnectModal,
+            openAccountModal,
+            openChainModal,
+            mounted,
+          }) => {
+            const ready = mounted
+            const connected = ready && account && chain
+
+            return (
+              <>
+                <button
+                  onClick={connected ? openAccountModal : openConnectModal}
+                  className={styles.connectButton}
+                >
+                  {connected
+                    ? `${account.address.slice(0, 6)}...${account.address.slice(-4)}`
+                    : 'Connect Wallet'}
+                </button>
+
+                {/* Button jaringan dengan popup */}
+                {connected && (
+                  <button
+                    onClick={openChainModal}
+                    className={styles.connectButton}
+                  >
+                    {chain.name}
+                  </button>
+                )}
+              </>
             )
-          }
-        >
-          Somnia Explorer
-        </div>
+          }}
+        </ConnectButton.Custom>
       </div>
     </div>
   )
