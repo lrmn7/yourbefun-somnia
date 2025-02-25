@@ -8,7 +8,7 @@ import twitter from './assets/twitter.svg'
 const Navbar = () => {
   return (
     <div className={styles.container}>
-      <div className={styles.logoContainer}>
+      <div className={`${styles.logoContainer} ${styles.hideOnMobile}`}>
         <Image
           src={logo}
           alt="Logo"
@@ -21,13 +21,12 @@ const Navbar = () => {
 
       <div className={styles.connectionsContainer}>
         <div
-          className={styles.dcButton}
+          className={`${styles.dcButton} ${styles.hideOnMobile}`}
           onClick={() => window.open('https://x.com/romanromannya', '_blank')}
         >
           <Image src={twitter} alt="Twitter-x" width={30} />
         </div>
 
-        {/* Custom ConnectButton */}
         <ConnectButton.Custom>
           {({
             account,
@@ -42,11 +41,10 @@ const Navbar = () => {
 
             return (
               <>
-                {/* Button jaringan dengan popup (sekarang di atas tombol connect) */}
                 {connected && (
                   <button
                     onClick={openChainModal}
-                    className={styles.connectButton}
+                    className={`${styles.connectButton} ${styles.hideOnMobile}`}
                   >
                     {chain.name}
                   </button>
@@ -61,7 +59,6 @@ const Navbar = () => {
                     : 'Connect Wallet'}
                 </button>
 
-                {/* Tombol SOMNIA EXPLORE */}
                 {connected && (
                   <button
                     onClick={() =>
@@ -70,7 +67,7 @@ const Navbar = () => {
                         '_blank',
                       )
                     }
-                    className={styles.connectButton}
+                    className={`${styles.connectButton} ${styles.hideOnMobile}`}
                   >
                     Somnia Explorer
                   </button>
