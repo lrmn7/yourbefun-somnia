@@ -10,7 +10,7 @@ import arrow3img from './assets/arrow3.svg'
 import arrow4img from './assets/arrow4.svg'
 
 const Roadmap = () => {
-  let functions = [
+  const functions = [
     () => setArrow1(true),
     () => setArrow2(true),
     () => setArrow3(true),

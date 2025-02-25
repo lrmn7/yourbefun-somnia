@@ -60,6 +60,21 @@ const Navbar = () => {
                     {chain.name}
                   </button>
                 )}
+
+                {/* Tombol SOMNIA EXPLORE */}
+                {connected && (
+                  <button
+                    onClick={() =>
+                      window.open(
+                        'https://somnia-testnet.socialscan.io/',
+                        '_blank',
+                      )
+                    }
+                    className={styles.connectButton}
+                  >
+                    SOMNIA EXPLORE
+                  </button>
+                )}
               </>
             )
           }}

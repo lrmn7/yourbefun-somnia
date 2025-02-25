@@ -1,6 +1,5 @@
 import '@/styles/globals.scss'
 import type { AppProps } from 'next/app'
-import { useRouter } from 'next/router'
 import '@rainbow-me/rainbowkit/styles.css'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { WagmiProvider } from 'wagmi'
