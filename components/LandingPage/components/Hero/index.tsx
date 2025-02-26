@@ -22,7 +22,7 @@ const Hero = () => {
   const [message, setMessage] = useState('')
   const [messages, setMessages] = useState<Message[]>([])
   const [account, setAccount] = useState<string | null>(null)
-  const [lrmnFee, setLrmnFee] = useState<string>('0.001') // Default fee
+  const [lrmnFee, setLrmnFee] = useState<string>('0.001')
   const [showPopup, setShowPopup] = useState(false)
   const [showErrorPopup, setShowErrorPopup] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
@@ -166,10 +166,14 @@ const Hero = () => {
   const showError = (msg: string) => {
     setErrorMessage(msg)
     setShowErrorPopup(true)
+
+    // Jika error adalah "Insufficient balance", tampilkan selama 30 detik, lainnya 5 detik
+    const duration = msg.includes('Insufficient balance') ? 30000 : 5000
+
     setTimeout(() => {
       setShowErrorPopup(false)
       setErrorMessage(null)
-    }, 5000)
+    }, duration)
   }
 
   return (
