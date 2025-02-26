@@ -174,8 +174,8 @@ const Hero = () => {
         <button
           onClick={sendMessage}
           className={styles.funMessageButton}
-          disabled={isSending || !isConnected}
-          // disabled={isSending} // Tombol dinonaktifkan jika wallet belum terhubung atau belum ada pesan
+          disabled={isSending}
+          // disabled={isSending || !isConnected} // Tombol dinonaktifkan jika wallet belum terhubung atau belum ada pesan
         >
           {isSending ? 'Please Wait...' : 'Blast a Message'}
         </button>
