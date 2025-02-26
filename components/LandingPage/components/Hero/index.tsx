@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { ethers } from 'ethers'
-import { useAccount } from 'wagmi' // Import useAccount dari wagmi
+import { useAccount } from 'wagmi'
 import styles from './styles.module.scss'
 import contractABI from './SmartContractAbi.json'
 
@@ -27,7 +27,6 @@ const Hero = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [isSending, setIsSending] = useState(false)
 
-  // Gunakan useAccount untuk mendapatkan status koneksi wallet
   const { isConnected } = useAccount()
 
   useEffect(() => {
@@ -76,7 +75,6 @@ const Hero = () => {
   }
 
   const sendMessage = async () => {
-    // Cek apakah wallet sudah terhubung
     if (!isConnected) {
       setErrorMessage('Please connect your wallet first!')
       setShowErrorPopup(true)
@@ -122,9 +120,19 @@ const Hero = () => {
         fetchMessages()
       } catch (error: any) {
         console.error('Error sending message:', error)
-        setErrorMessage(error.reason || 'Transaction failed! Please try again.')
-        setShowErrorPopup(true)
 
+        let errorMsg = 'Transaction failed! Please try again.'
+
+        if (error.reason) {
+          errorMsg = error.reason
+        } else if (error.message.includes('require(false)')) {
+          errorMsg = 'Insufficient balance to send message'
+        } else if (error.message) {
+          errorMsg = error.message
+        }
+
+        setErrorMessage(errorMsg)
+        setShowErrorPopup(true)
         setTimeout(() => {
           setShowErrorPopup(false)
           setErrorMessage(null)
