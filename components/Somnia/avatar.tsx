@@ -6,7 +6,7 @@ const CustomAvatar: AvatarComponent = ({ size }) => {
   return (
     <Image
       src={avatar.src}
-      alt="Custom Avatar"
+      alt="AvatarChains"
       width={size}
       height={size}
       style={{ borderRadius: '50%' }}

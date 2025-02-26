@@ -15,7 +15,7 @@ export const somnia = {
   blockExplorers: {
     default: {
       name: 'Somnia Explorer',
-      url: 'https://somnia-devnet.socialscan.io/',
+      url: 'https://somnia-testnet.socialscan.io/',
     },
   },
 }

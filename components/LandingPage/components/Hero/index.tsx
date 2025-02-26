@@ -166,8 +166,6 @@ const Hero = () => {
   const showError = (msg: string) => {
     setErrorMessage(msg)
     setShowErrorPopup(true)
-
-    // Jika error adalah "Insufficient balance", tampilkan selama 30 detik, lainnya 5 detik
     const duration = msg.includes('Insufficient balance') ? 30000 : 5000
 
     setTimeout(() => {
