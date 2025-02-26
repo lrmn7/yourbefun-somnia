@@ -29,8 +29,8 @@ const Hero = () => {
   useEffect(() => {
     connectWallet()
     fetchMessages()
-    const interval = setInterval(fetchMessages, 5000) // Polling setiap 5 detik
-    return () => clearInterval(interval) // Hentikan polling saat komponen unmount
+    const interval = setInterval(fetchMessages, 5000)
+    return () => clearInterval(interval)
   }, [])
 
   const connectWallet = async () => {

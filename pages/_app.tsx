@@ -16,9 +16,19 @@ export default function App({ Component, pageProps }: AppProps) {
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider
-          theme={darkTheme()}
+          theme={darkTheme({
+            accentColor: '#e52694',
+            accentColorForeground: 'white',
+            borderRadius: 'large',
+            fontStack: 'rounded',
+            overlayBlur: 'small',
+          })}
           avatar={avatar}
-          appInfo={{ disclaimer: Disclaimer }}
+          appInfo={{
+            appName: 'Somnia Network',
+            learnMoreUrl: 'https://somnia.network/',
+            disclaimer: Disclaimer,
+          }}
         >
           <Component {...pageProps} />
         </RainbowKitProvider>
