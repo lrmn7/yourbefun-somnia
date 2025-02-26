@@ -106,3 +106,129 @@
     transform: translateY(0px);
   }
 }
+
+/* ================= RESPONSIVE DESIGN ================= */
+
+/* Tablet (Lebar <= 1024px) */
+@media screen and (max-width: 1024px) {
+  .widthLimiter {
+    width: 85%;
+    margin-top: 120px;
+  }
+
+  .secondaryTitle {
+    font-size: 36px;
+  }
+
+  .descriptionContainer {
+    font-size: 20px;
+  }
+
+  .listContainer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .leftSide {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .rightSide {
+    width: 100%;
+  }
+
+  .rightSide li {
+    font-size: 20px;
+  }
+
+  .cardContainer {
+    padding: 20px 50px;
+  }
+}
+
+/* Mobile (Lebar <= 768px) */
+@media screen and (max-width: 768px) {
+  .widthLimiter {
+    width: 90%;
+    margin-top: 100px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .secondaryTitle {
+    font-size: 28px;
+  }
+
+  .descriptionContainer {
+    font-size: 18px;
+    margin-top: 50px;
+  }
+
+  .listContainer {
+    flex-direction: column;
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .leftSide {
+    width: 100%;
+  }
+
+  .image {
+    width: 70% !important;
+  }
+
+  .rightSide {
+    width: 100%;
+  }
+
+  .rightSide li {
+    font-size: 18px;
+  }
+
+  .cardContainer {
+    padding: 15px 30px;
+    font-size: 12px;
+  }
+}
+
+/* Handphone Kecil (Lebar <= 480px) */
+@media screen and (max-width: 480px) {
+  .widthLimiter {
+    width: 95%;
+    margin-top: 80px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .secondaryTitle {
+    font-size: 24px;
+  }
+
+  .descriptionContainer {
+    font-size: 16px;
+  }
+
+  .listContainer {
+    margin-top: 40px;
+  }
+
+  .image {
+    width: 80% !important;
+  }
+
+  .rightSide li {
+    font-size: 16px;
+  }
+
+  .cardContainer {
+    padding: 10px 20px;
+    font-size: 12px;
+  }
+}

@@ -260,3 +260,76 @@
   background-color: gray;
   cursor: not-allowed;
 }
+
+
+@media (max-width: 768px) {
+  .gridContainer {
+    flex-direction: column; // Ubah layout ke vertical
+    height: auto;
+
+    .blankContainer,
+    .logoContainer,
+    .mintContainer {
+      width: 100%; // Buat elemen memenuhi lebar layar
+    }
+
+    .logoContainer {
+      margin-bottom: 100px; // Kurangi margin agar lebih rapi di layar kecil
+    }
+
+    .mintContainer {
+      align-items: center; // Pusatkan elemen
+      .widthContainer {
+        width: 90%; // Perbesar untuk layar kecil
+        margin-bottom: 50px;
+      }
+    }
+  }
+
+  .positionContainer {
+    transform: translateY(-100px); // Sesuaikan untuk layar kecil
+  }
+}
+
+@media (max-width: 1024px) {
+  .gridContainer {
+    .logoContainer {
+      margin-bottom: 150px; // Sesuaikan margin agar tetap proporsional
+    }
+
+    .mintContainer {
+      .widthContainer {
+        width: 85%;
+        margin-bottom: 60px;
+      }
+    }
+  }
+
+  .positionContainer {
+    height: 120px;
+    transform: translateY(-120px);
+  }
+}
+
+@media (max-width: 480px) {
+  .gridContainer {
+    .logoContainer {
+      transform: scale(0.8); // Kecilkan sedikit untuk muat di layar kecil
+    }
+    .mintContainer {
+      .widthContainer {
+        width: 95%;
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+  .funMessageSection {
+    top: 20%; // Turunkan posisi agar tidak terlalu ke atas
+    left: 0; // Pusatkan
+  }
+
+  .funMessageInputContainer {
+    max-width: 300px; // Kurangi lebar input agar tidak kepanjangan di layar kecil
+  }
+}

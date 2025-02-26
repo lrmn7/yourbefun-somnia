@@ -4,3 +4,10 @@
   background-color: #000000;
   z-index: 0;
 } 
+
+/* Sembunyikan background gambar di layar kecil (handphone) */
+@media screen and (max-width: 768px) {
+  .container {
+    background-image: none; /* Hapus background gambar */
+  }
+}
