@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { ethers } from 'ethers'
+import { useAccount } from 'wagmi' // Import useAccount dari wagmi
 import styles from './styles.module.scss'
 import contractABI from './SmartContractAbi.json'
 
@@ -25,6 +26,9 @@ const Hero = () => {
   const [showErrorPopup, setShowErrorPopup] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [isSending, setIsSending] = useState(false)
+
+  // Gunakan useAccount untuk mendapatkan status koneksi wallet
+  const { isConnected } = useAccount()
 
   useEffect(() => {
     connectWallet()
@@ -72,6 +76,17 @@ const Hero = () => {
   }
 
   const sendMessage = async () => {
+    // Cek apakah wallet sudah terhubung
+    if (!isConnected) {
+      setErrorMessage('Please connect your wallet first!')
+      setShowErrorPopup(true)
+      setTimeout(() => {
+        setShowErrorPopup(false)
+        setErrorMessage(null)
+      }, 5000)
+      return
+    }
+
     if (!message.trim()) {
       setShowPopup(true)
       setTimeout(() => setShowPopup(false), 5000)
@@ -159,7 +174,8 @@ const Hero = () => {
         <button
           onClick={sendMessage}
           className={styles.funMessageButton}
-          disabled={isSending}
+          disabled={isSending || !isConnected}
+          // disabled={isSending} // Tombol dinonaktifkan jika wallet belum terhubung atau belum ada pesan
         >
           {isSending ? 'Please Wait...' : 'Blast a Message'}
         </button>
