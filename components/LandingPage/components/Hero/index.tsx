@@ -22,6 +22,7 @@ const Hero = () => {
   const [message, setMessage] = useState('')
   const [messages, setMessages] = useState<Message[]>([])
   const [account, setAccount] = useState<string | null>(null)
+  const [lrmnFee, setLrmnFee] = useState<string>('0.001') // Default fee
   const [showPopup, setShowPopup] = useState(false)
   const [showErrorPopup, setShowErrorPopup] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
@@ -32,6 +33,7 @@ const Hero = () => {
   useEffect(() => {
     connectWallet()
     fetchMessages()
+    fetchFee()
     const interval = setInterval(fetchMessages, 5000)
     return () => clearInterval(interval)
   }, [])
@@ -74,14 +76,26 @@ const Hero = () => {
     }
   }
 
-  const sendMessage = async () => {
+  const fetchFee = async () => {
+    try {
+      const provider = new ethers.JsonRpcProvider(
+        'https://dream-rpc.somnia.network',
+      )
+      const contract = new ethers.Contract(
+        contractAddress,
+        contractABI,
+        provider,
+      )
+      const fee = await contract.lrmnFee()
+      setLrmnFee(ethers.formatEther(fee))
+    } catch (error) {
+      console.error('Error fetching fee:', error)
+    }
+  }
+
+  const checkBalanceAndSendMessage = async () => {
     if (!isConnected) {
-      setErrorMessage('Please connect your wallet first!')
-      setShowErrorPopup(true)
-      setTimeout(() => {
-        setShowErrorPopup(false)
-        setErrorMessage(null)
-      }, 5000)
+      showError('Please connect your wallet first!')
       return
     }
 
@@ -94,15 +108,28 @@ const Hero = () => {
     if (window.ethereum) {
       const provider = new ethers.BrowserProvider(window.ethereum)
       const signer = await provider.getSigner()
+      const balance = await provider.getBalance(await signer.getAddress())
+
+      const requiredFee = ethers.parseEther(lrmnFee)
+      if (balance < requiredFee) {
+        showError(
+          'Insufficient balance to send message, get faucet first here https://testnet.somnia.network/',
+        )
+        return
+      }
+
+      await sendMessage()
+    }
+  }
+
+  const sendMessage = async () => {
+    if (window.ethereum) {
+      const provider = new ethers.BrowserProvider(window.ethereum)
+      const signer = await provider.getSigner()
       const network = await provider.getNetwork()
 
       if (network.chainId !== BigInt(50312)) {
-        setErrorMessage('You are not connected to Somnia Network Testnet!')
-        setShowErrorPopup(true)
-        setTimeout(() => {
-          setShowErrorPopup(false)
-          setErrorMessage(null)
-        }, 5000)
+        showError('You are not connected to Somnia Network Testnet!')
         return
       }
 
@@ -112,7 +139,7 @@ const Hero = () => {
         setIsSending(true)
 
         const tx = await contract.sendMessage(message, {
-          value: ethers.parseEther('0.001'),
+          value: ethers.parseEther(lrmnFee),
         })
         await tx.wait()
 
@@ -120,27 +147,29 @@ const Hero = () => {
         fetchMessages()
       } catch (error: any) {
         console.error('Error sending message:', error)
-
-        let errorMsg = 'Transaction failed! Please try again.'
-
-        if (error.reason) {
-          errorMsg = error.reason
-        } else if (error.message.includes('require(false)')) {
-          errorMsg = 'Insufficient balance to send message'
-        } else if (error.message) {
-          errorMsg = error.message
-        }
-
-        setErrorMessage(errorMsg)
-        setShowErrorPopup(true)
-        setTimeout(() => {
-          setShowErrorPopup(false)
-          setErrorMessage(null)
-        }, 5000)
+        showError(parseErrorMessage(error))
       } finally {
         setIsSending(false)
       }
     }
+  }
+
+  const parseErrorMessage = (error: any) => {
+    return (
+      error.reason ||
+      error.data?.message ||
+      error.message ||
+      'Transaction failed! Please try again.'
+    )
+  }
+
+  const showError = (msg: string) => {
+    setErrorMessage(msg)
+    setShowErrorPopup(true)
+    setTimeout(() => {
+      setShowErrorPopup(false)
+      setErrorMessage(null)
+    }, 5000)
   }
 
   return (
@@ -180,15 +209,14 @@ const Hero = () => {
         </div>
 
         <button
-          onClick={sendMessage}
+          onClick={checkBalanceAndSendMessage}
           className={styles.funMessageButton}
           disabled={isSending}
-          // disabled={isSending || !isConnected} // Tombol dinonaktifkan jika wallet belum terhubung atau belum ada pesan
         >
           {isSending ? 'Please Wait...' : 'Blast a Message'}
         </button>
 
-        <div className={styles.funMessageAlert}>(0.001 STT)</div>
+        <div className={styles.funMessageAlert}>({lrmnFee} STT)</div>
 
         <div className={styles.recentMessagesContainer}>
           <h3>Fresh Off the Keyboard</h3>
