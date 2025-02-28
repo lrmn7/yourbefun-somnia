@@ -4,7 +4,7 @@ import { useAccount } from 'wagmi'
 import styles from './styles.module.scss'
 import contractABI from './SmartContractAbi.json'
 
-const contractAddress = '0xC7db42854266939dEf416d043d1C7c50Ee7ea8a4'
+const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS || ''
 
 declare global {
   interface Window {
