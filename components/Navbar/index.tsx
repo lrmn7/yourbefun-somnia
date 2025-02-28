@@ -63,7 +63,7 @@ const Navbar = () => {
                   <button
                     onClick={() =>
                       window.open(
-                        'https://shannon-explorer.somnia.network/address/0xC7db42854266939dEf416d043d1C7c50Ee7ea8a4',
+                        'https://shannon-explorer.somnia.network/address/0x6c8fF51B9fb05307e39dDB2b44001203a54B5f46',
                         '_blank',
                       )
                     }
