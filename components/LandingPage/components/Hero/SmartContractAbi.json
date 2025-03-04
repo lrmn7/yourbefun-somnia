@@ -306,50 +306,6 @@
             {
                 "indexed": true,
                 "internalType": "address",
-                "name": "sender",
-                "type": "address"
-            },
-            {
-                "indexed": false,
-                "internalType": "string",
-                "name": "message",
-                "type": "string"
-            },
-            {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "senderMessageCount",
-                "type": "uint256"
-            },
-            {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "totalMessages",
-                "type": "uint256"
-            }
-        ],
-        "name": "TGSMessageSent",
-        "type": "event"
-    },
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": false,
-                "internalType": "bool",
-                "name": "isPaused",
-                "type": "bool"
-            }
-        ],
-        "name": "TGSPaused",
-        "type": "event"
-    },
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": true,
-                "internalType": "address",
                 "name": "from",
                 "type": "address"
             },
@@ -380,6 +336,50 @@
             }
         ],
         "name": "Unpaused",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "sender",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "message",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "senderMessageCount",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "totalMessages",
+                "type": "uint256"
+            }
+        ],
+        "name": "YBFMessageSent",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "bool",
+                "name": "isPaused",
+                "type": "bool"
+            }
+        ],
+        "name": "YBFPaused",
         "type": "event"
     },
     {
@@ -615,7 +615,7 @@
                         "type": "string"
                     }
                 ],
-                "internalType": "struct TehGelas.TGSMessage[]",
+                "internalType": "struct YourBeFun.YBFMessage[]",
                 "name": "",
                 "type": "tuple[]"
             }

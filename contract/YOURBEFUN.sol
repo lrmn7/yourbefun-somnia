@@ -17,7 +17,7 @@ contract YourBeFun is ERC20, ERC20Burnable, ERC20Pausable, Ownable, ERC20Permit 
     }
 
     uint256 public constant MAX_MESSAGES = 10;
-    uint256 public constant INITIAL_SUPPLY = 5_000_000_000 * 10 ** 18;
+    uint256 public constant INITIAL_SUPPLY = 1_000_000_000 * 10 ** 18;
 
     uint256 public btFee;
     uint256 public totalMessages;
@@ -34,9 +34,9 @@ contract YourBeFun is ERC20, ERC20Burnable, ERC20Pausable, Ownable, ERC20Permit 
     event YBFPaused(bool isPaused);
 
     constructor(address initialOwner, address recipient, uint256 _fee)
-        ERC20("YourBeFun", "YBF")
+        ERC20("YOUR BE FUN", "YBF")
         Ownable(initialOwner)
-        ERC20Permit("YourBeFun")
+        ERC20Permit("YOUR BE FUN")
     {
         _mint(recipient, INITIAL_SUPPLY);
         btFee = _fee;
@@ -91,7 +91,6 @@ contract YourBeFun is ERC20, ERC20Burnable, ERC20Pausable, Ownable, ERC20Permit 
         payable(owner()).transfer(address(this).balance);
     }
 
-    // Override required by Solidity
     function _update(address from, address to, uint256 value)
         internal
         override(ERC20, ERC20Pausable)
