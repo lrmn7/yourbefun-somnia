@@ -3,8 +3,10 @@ import { ethers } from 'ethers'
 import { useAccount } from 'wagmi'
 import styles from './styles.module.scss'
 import contractABI from './SmartContractAbi.json'
+import contractABInft from './SmartContractAbiNFT.json'
 
 const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS || ''
+const contractAddressNFT = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS_NFT || ''
 
 declare global {
   interface Window {
@@ -23,10 +25,12 @@ const Hero = () => {
   const [messages, setMessages] = useState<Message[]>([])
   const [account, setAccount] = useState<string | null>(null)
   const [lrmnFee, setLrmnFee] = useState<string>('0.001')
+  const [nftMintFee, setNftMintFee] = useState<string>('0')
   const [showPopup, setShowPopup] = useState(false)
   const [showErrorPopup, setShowErrorPopup] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
-  const [isSending, setIsSending] = useState(false)
+  const [isProcessingMessage, setIsProcessingMessage] = useState(false)
+  const [isProcessingNFT, setIsProcessingNFT] = useState(false)
 
   const { isConnected } = useAccount()
 
@@ -34,6 +38,7 @@ const Hero = () => {
     connectWallet()
     fetchMessages()
     fetchFee()
+    fetchNFTFee()
     const interval = setInterval(fetchMessages, 5000)
     return () => clearInterval(interval)
   }, [])
@@ -60,7 +65,6 @@ const Hero = () => {
         contractABI,
         provider,
       )
-
       const data = await contract.getLastMessages()
       const totalMessages = await contract.totalMessages()
 
@@ -93,6 +97,24 @@ const Hero = () => {
     }
   }
 
+  const fetchNFTFee = async () => {
+    try {
+      const provider = new ethers.JsonRpcProvider(
+        'https://dream-rpc.somnia.network',
+      )
+      const contract = new ethers.Contract(
+        contractAddressNFT,
+        contractABInft,
+        provider,
+      )
+      const fee = await contract.getMintFee()
+      setNftMintFee(ethers.formatEther(fee))
+    } catch (error) {
+      console.error('Error fetching NFT mint fee:', error)
+    }
+  }
+
+  // Fungsi validasi dan pengiriman pesan (blast a message)
   const checkBalanceAndSendMessage = async () => {
     if (!isConnected) {
       showError('Please connect your wallet first!')
@@ -108,17 +130,18 @@ const Hero = () => {
     if (window.ethereum) {
       const provider = new ethers.BrowserProvider(window.ethereum)
       const signer = await provider.getSigner()
-      const balance = await provider.getBalance(await signer.getAddress())
+      const userAddress = await signer.getAddress()
+      const balance = await provider.getBalance(userAddress)
 
-      const requiredFee = ethers.parseEther(lrmnFee)
-      if (balance < requiredFee) {
+      const fee = ethers.parseEther(lrmnFee)
+      if (balance < fee) {
         showError(
-          'Insufficient balance to send message, get faucet first here https://testnet.somnia.network/',
+          'Insufficient balance to send message. Please get faucet first at https://testnet.somnia.network/',
         )
         return
       }
 
-      await sendMessage()
+      sendMessage()
     }
   }
 
@@ -133,23 +156,83 @@ const Hero = () => {
         return
       }
 
-      const contract = new ethers.Contract(contractAddress, contractABI, signer)
+      const messageContract = new ethers.Contract(
+        contractAddress,
+        contractABI,
+        signer,
+      )
 
       try {
-        setIsSending(true)
-
-        const tx = await contract.sendMessage(message, {
+        setIsProcessingMessage(true)
+        const tx = await messageContract.sendMessage(message, {
           value: ethers.parseEther(lrmnFee),
         })
         await tx.wait()
-
         setMessage('')
         fetchMessages()
       } catch (error: any) {
-        console.error('Error sending message:', error)
+        console.error('Error processing transaction:', error)
         showError(parseErrorMessage(error))
       } finally {
-        setIsSending(false)
+        setIsProcessingMessage(false)
+      }
+    }
+  }
+
+  // Fungsi validasi dan mint NFT
+  const checkBalanceAndMintNFT = async () => {
+    if (!isConnected) {
+      showError('Please connect your wallet first!')
+      return
+    }
+
+    if (window.ethereum) {
+      const provider = new ethers.BrowserProvider(window.ethereum)
+      const signer = await provider.getSigner()
+      const userAddress = await signer.getAddress()
+      const balance = await provider.getBalance(userAddress)
+
+      const fee = ethers.parseEther(nftMintFee)
+      if (balance < fee) {
+        showError(
+          'Insufficient balance to mint NFT. Please get faucet first at https://testnet.somnia.network/',
+        )
+        return
+      }
+
+      mintNFT()
+    }
+  }
+
+  const mintNFT = async () => {
+    if (window.ethereum) {
+      const provider = new ethers.BrowserProvider(window.ethereum)
+      const signer = await provider.getSigner()
+      const network = await provider.getNetwork()
+
+      if (network.chainId !== BigInt(50312)) {
+        showError('You are not connected to Somnia Network Testnet!')
+        return
+      }
+
+      const nftContract = new ethers.Contract(
+        contractAddressNFT,
+        contractABInft,
+        signer,
+      )
+
+      try {
+        setIsProcessingNFT(true)
+        const tx = await nftContract.mintNft({
+          value: ethers.parseEther(nftMintFee),
+        })
+        await tx.wait()
+        fetchMessages()
+      } catch (error: any) {
+        console.error('Error processing NFT transaction:', error)
+        showError(parseErrorMessage(error))
+      } finally {
+        setIsProcessingNFT(false)
       }
     }
   }
@@ -210,15 +293,24 @@ const Hero = () => {
           </div>
         </div>
 
-        <button
-          onClick={checkBalanceAndSendMessage}
-          className={styles.funMessageButton}
-          disabled={isSending}
-        >
-          {isSending ? 'Please Wait...' : 'Blast a Message'}
-        </button>
-
-        <div className={styles.funMessageAlert}>({lrmnFee} STT)</div>
+        {/* Tombol-tombol diposisikan bersebelahan */}
+        <div className={styles.buttonContainer}>
+          <button
+            onClick={checkBalanceAndSendMessage}
+            className={styles.funMessageButton}
+            disabled={isProcessingMessage}
+          >
+            {isProcessingMessage ? 'Processing...' : 'Blast a Message'}
+          </button>
+          <button
+            onClick={checkBalanceAndMintNFT}
+            className={styles.funMessageButton}
+            disabled={isProcessingNFT}
+          >
+            {isProcessingNFT ? 'Processing...' : 'Pop a Mint'}
+          </button>
+        </div>
+        <div className={styles.funMessageAlert}>(0.001 STT)</div>
 
         <div className={styles.recentMessagesContainer}>
           <h3>Fresh Off the Keyboard</h3>

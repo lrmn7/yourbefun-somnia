@@ -333,3 +333,10 @@
     max-width: 300px; // Kurangi lebar input agar tidak kepanjangan di layar kecil
   }
 }
+
+.buttonContainer {
+  display: flex;
+  gap: 10px; // atau jarak yang diinginkan antara tombol
+  justify-content: center; // opsional, untuk meratakan ke tengah
+  align-items: center;   // opsional, untuk penyelarasan vertikal
+}
