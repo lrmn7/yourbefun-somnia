@@ -29,6 +29,9 @@ const Hero = () => {
   const [showPopup, setShowPopup] = useState(false)
   const [showErrorPopup, setShowErrorPopup] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false)
+  const [successMessage, setSuccessMessage] = useState<string | null>(null)
+  const [successTxUrl, setSuccessTxUrl] = useState<string | null>(null)
   const [isProcessingMessage, setIsProcessingMessage] = useState(false)
   const [isProcessingNFT, setIsProcessingNFT] = useState(false)
 
@@ -114,7 +117,28 @@ const Hero = () => {
     }
   }
 
-  // Fungsi validasi dan pengiriman pesan (blast a message)
+  const showError = (msg: string) => {
+    setErrorMessage(msg)
+    setShowErrorPopup(true)
+    const duration = msg.includes('Insufficient balance') ? 30000 : 10000
+
+    setTimeout(() => {
+      setShowErrorPopup(false)
+      setErrorMessage(null)
+    }, duration)
+  }
+
+  const showSuccess = (msg: string, txUrl?: string) => {
+    setSuccessMessage(msg)
+    if (txUrl) setSuccessTxUrl(txUrl)
+    setShowSuccessPopup(true)
+    setTimeout(() => {
+      setShowSuccessPopup(false)
+      setSuccessMessage(null)
+      setSuccessTxUrl(null)
+    }, 10000)
+  }
+
   const checkBalanceAndSendMessage = async () => {
     if (!isConnected) {
       showError('Please connect your wallet first!')
@@ -123,7 +147,7 @@ const Hero = () => {
 
     if (!message.trim()) {
       setShowPopup(true)
-      setTimeout(() => setShowPopup(false), 5000)
+      setTimeout(() => setShowPopup(false), 10000)
       return
     }
 
@@ -170,6 +194,11 @@ const Hero = () => {
         await tx.wait()
         setMessage('')
         fetchMessages()
+        const txUrl = `https://shannon-explorer.somnia.network/tx/${tx.hash}`
+        showSuccess(
+          'Blast a Message successful! Click here to view details.',
+          txUrl,
+        )
       } catch (error: any) {
         console.error('Error processing transaction:', error)
         showError(parseErrorMessage(error))
@@ -179,7 +208,6 @@ const Hero = () => {
     }
   }
 
-  // Fungsi validasi dan mint NFT
   const checkBalanceAndMintNFT = async () => {
     if (!isConnected) {
       showError('Please connect your wallet first!')
@@ -228,6 +256,11 @@ const Hero = () => {
         })
         await tx.wait()
         fetchMessages()
+        const txUrl = `https://shannon-explorer.somnia.network/tx/${tx.hash}`
+        showSuccess(
+          'Pop a Mint successfully! Click here to view details.',
+          txUrl,
+        )
       } catch (error: any) {
         console.error('Error processing NFT transaction:', error)
         showError(parseErrorMessage(error))
@@ -244,17 +277,6 @@ const Hero = () => {
       error.message ||
       'Transaction failed! Please try again.'
     )
-  }
-
-  const showError = (msg: string) => {
-    setErrorMessage(msg)
-    setShowErrorPopup(true)
-    const duration = msg.includes('Insufficient balance') ? 30000 : 5000
-
-    setTimeout(() => {
-      setShowErrorPopup(false)
-      setErrorMessage(null)
-    }, duration)
   }
 
   return (
@@ -281,6 +303,23 @@ const Hero = () => {
             </div>
           )}
 
+          {showSuccessPopup && successMessage && (
+            <div className={`${styles.popupError} ${styles.show}`}>
+              {successTxUrl ? (
+                <a
+                  href={successTxUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: 'inherit', textDecoration: 'none' }}
+                >
+                  {successMessage}
+                </a>
+              ) : (
+                successMessage
+              )}
+            </div>
+          )}
+
           <div className={styles.inputWrapper}>
             <input
               type="text"
@@ -293,7 +332,6 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Tombol-tombol diposisikan bersebelahan */}
         <div className={styles.buttonContainer}>
           <button
             onClick={checkBalanceAndSendMessage}
