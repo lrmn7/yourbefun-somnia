@@ -62,14 +62,11 @@ const Navbar = () => {
                 {connected && (
                   <button
                     onClick={() =>
-                      window.open(
-                        'https://shannon-explorer.somnia.network/address/0x128664ce37313393cf06a07bac122a3595b55d95',
-                        '_blank',
-                      )
+                      window.open('https://testnet.somnia.network/', '_blank')
                     }
                     className={`${styles.connectButton} ${styles.hideOnMobile}`}
                   >
-                    Somnia Explorer
+                    Explorer Somnia
                   </button>
                 )}
               </>
