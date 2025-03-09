@@ -21,7 +21,7 @@ const Withdraw = () => {
   >(null)
   const [contractBalance, setContractBalance] = useState<string | null>(null)
   const [isProcessing, setIsProcessing] = useState<boolean>(false)
-    const { isConnected } = useAccount()
+  const { isConnected } = useAccount()
 
   useEffect(() => {
     if (window.ethereum && window.ethereum.selectedAddress) {
