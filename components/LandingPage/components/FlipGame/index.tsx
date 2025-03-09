@@ -6,6 +6,7 @@ import spinningImageUrl from './assets/flip.gif'
 import contractABI from './SmartContractAbiFlip.json'
 import styles from './styles.module.scss'
 import Image, { StaticImageData } from 'next/image'
+import { useAccount } from 'wagmi'
 
 const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS_FLIPGAME || ''
 const BlockExplorer = process.env.NEXT_PUBLIC_BLOCK_EXPLORER || ''
@@ -54,6 +55,8 @@ const SomFlip = () => {
   useEffect(() => {
     setCoinImage(selectedSide === 'Heads' ? headsImageUrl : tailsImageUrl)
   }, [selectedSide])
+
+  const { isConnected } = useAccount()
 
   useEffect(() => {
     if (window.ethereum && window.ethereum.selectedAddress) {
@@ -159,7 +162,7 @@ const SomFlip = () => {
   }, [])
 
   const handleFlip = async () => {
-    if (!account || !provider || !contract) {
+    if (!account || !provider || !contract || !isConnected) {
       setPopupMessage('Please connect your wallet first')
       return
     }
