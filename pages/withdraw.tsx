@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { ethers, BrowserProvider, Contract } from 'ethers'
+import { ConnectButton } from '@rainbow-me/rainbowkit'
 import contractABI from './Withdraw/SmartContractAbiFlip.json'
 import styles from './Withdraw/styles.module.scss'
 import { useAccount } from 'wagmi'
+
 const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS_FLIPGAME || ''
 
 declare global {
@@ -129,28 +131,38 @@ const Withdraw = () => {
         <h2 className={styles.header}>YourBeFun - FlipGame Withdraw</h2>
 
         <div className={styles.withdrawContainer}>
-          <div className={styles.betSelection}>
-            {['25%', '50%', '70%', '100%'].map((percentStr) => {
-              const percent = parseInt(percentStr)
-              return (
-                <button
-                  key={percent}
-                  className={styles.betBtn}
-                  onClick={() => handleWithdraw(percent)}
-                  disabled={isProcessing}
-                >
-                  {withdrawingPercentage === percent
-                    ? 'Processing...'
-                    : percentStr}
-                </button>
-              )
-            })}
+          {/* Connect Wallet Button */}
+          <div className={styles.connectContainer}>
+            <ConnectButton />
           </div>
 
-          {contractBalance && (
-            <p className={styles.contractBalance}>
-              Contract Balance: {parseFloat(contractBalance).toFixed(4)} STT
-            </p>
+          {/* Tampilkan tombol withdraw hanya jika wallet sudah terkoneksi */}
+          {isConnected && (
+            <>
+              <div className={styles.betSelection}>
+                {['25%', '50%', '70%', '100%'].map((percentStr) => {
+                  const percent = parseInt(percentStr)
+                  return (
+                    <button
+                      key={percent}
+                      className={styles.betBtn}
+                      onClick={() => handleWithdraw(percent)}
+                      disabled={isProcessing}
+                    >
+                      {withdrawingPercentage === percent
+                        ? 'Processing...'
+                        : percentStr}
+                    </button>
+                  )
+                })}
+              </div>
+
+              {contractBalance && (
+                <p className={styles.contractBalance}>
+                  Contract Balance: {parseFloat(contractBalance).toFixed(4)} STT
+                </p>
+              )}
+            </>
           )}
         </div>
 
