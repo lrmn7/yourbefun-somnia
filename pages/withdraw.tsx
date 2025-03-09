@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { ethers, BrowserProvider, Contract } from 'ethers'
+import { ethers } from 'ethers'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import contractABI from './Withdraw/SmartContractAbiFlip.json'
 import styles from './Withdraw/styles.module.scss'
@@ -15,25 +15,22 @@ declare global {
 
 const Withdraw = () => {
   const [account, setAccount] = useState<string | null>(null)
-  const [provider, setProvider] = useState<BrowserProvider | null>(null)
-  const [contract, setContract] = useState<Contract | null>(null)
+  const [provider, setProvider] = useState<ethers.BrowserProvider | null>(null)
+  const [contract, setContract] = useState<ethers.Contract | null>(null)
   const [popupMessage, setPopupMessage] = useState<string | null>(null)
   const [withdrawingPercentage, setWithdrawingPercentage] = useState<
     number | null
   >(null)
   const [contractBalance, setContractBalance] = useState<string | null>(null)
   const [isProcessing, setIsProcessing] = useState<boolean>(false)
-  const { isConnected } = useAccount()
+  const { address, isConnected } = useAccount()
 
   useEffect(() => {
-    if (window.ethereum && window.ethereum.selectedAddress) {
+    if (isConnected && window.ethereum && address) {
       const web3Provider = new ethers.BrowserProvider(window.ethereum)
       setProvider(web3Provider)
+      setAccount(address)
       web3Provider.getSigner().then((signer) => {
-        signer
-          .getAddress()
-          .then((addr) => setAccount(addr))
-          .catch(() => setAccount(null))
         const gameContract = new ethers.Contract(
           contractAddress,
           contractABI,
@@ -42,7 +39,7 @@ const Withdraw = () => {
         setContract(gameContract)
       })
     }
-  }, [])
+  }, [isConnected, address])
 
   useEffect(() => {
     if (window.ethereum) {
@@ -64,10 +61,8 @@ const Withdraw = () => {
           setContract(null)
         }
       }
+
       window.ethereum.on('accountsChanged', handleAccountsChanged)
-      if (window.ethereum.selectedAddress) {
-        handleAccountsChanged([window.ethereum.selectedAddress])
-      }
       return () => {
         if (window.ethereum.removeListener) {
           window.ethereum.removeListener(
@@ -170,7 +165,7 @@ const Withdraw = () => {
           <div className={styles.popupOverlay}>
             <div className={styles.popupContent}>
               <p>⚠️ {popupMessage}</p>
-              <button onClick={() => setPopupMessage(null)}>Tutup</button>
+              <button onClick={() => setPopupMessage(null)}>Close</button>
             </div>
           </div>
         )}

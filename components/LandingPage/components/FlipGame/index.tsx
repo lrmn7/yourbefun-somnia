@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { ethers, BrowserProvider, Contract } from 'ethers'
+import { ethers } from 'ethers'
 import headsImageUrl from './assets/heads.png'
 import tailsImageUrl from './assets/tails.png'
 import spinningImageUrl from './assets/flips.gif'
@@ -17,15 +17,6 @@ declare global {
   }
 }
 
-interface FlipResultEvent {
-  player: string
-  betAmount: bigint
-  choice: string
-  result: string
-  payout: bigint
-  event?: any
-}
-
 interface FlipResult {
   player: string
   betAmount: string
@@ -40,8 +31,8 @@ const SomFlip = () => {
   const [betAmount, setBetAmount] = useState<string>('0.05')
   const [account, setAccount] = useState<string | null>(null)
   const [isFlipping, setIsFlipping] = useState<boolean>(false)
-  const [provider, setProvider] = useState<BrowserProvider | null>(null)
-  const [contract, setContract] = useState<Contract | null>(null)
+  const [provider, setProvider] = useState<ethers.BrowserProvider | null>(null)
+  const [contract, setContract] = useState<ethers.Contract | null>(null)
   const [flipResult, setFlipResult] = useState<FlipResult | null>(null)
   const [coinImage, setCoinImage] = useState<string | StaticImageData>(
     tailsImageUrl,
@@ -92,10 +83,10 @@ const SomFlip = () => {
 
     const handleFlipResult = (
       player: string,
-      betAmount: bigint,
+      betAmount: any,
       choice: string,
       result: string,
-      payout: bigint,
+      payout: any,
       event: any,
     ) => {
       console.log('FlipResult Event:', {
@@ -249,7 +240,6 @@ const SomFlip = () => {
         <div className={styles.centerContainer}>
           <div className={styles.titleContainer}>
             <div className={styles.title}>Looking for STT?</div>
-
             <div className={styles.secondaryTitle}>
               Experience the Thrill of Every Flip!
             </div>
@@ -360,11 +350,12 @@ const SomFlip = () => {
                   ))}
                 </ul>
               </div>
+
               {popupMessage && (
                 <div className={styles.popupOverlay}>
                   <div className={styles.popupContent}>
                     <p>⚠️ {popupMessage}</p>
-                    <button onClick={() => setPopupMessage(null)}>Tutup</button>
+                    <button onClick={() => setPopupMessage(null)}>Close</button>
                   </div>
                 </div>
               )}
