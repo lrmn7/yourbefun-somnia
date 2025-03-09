@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { ethers } from 'ethers'
+import { Block, ethers } from 'ethers'
 import { useAccount } from 'wagmi'
 import styles from './styles.module.scss'
 import contractABI from './SmartContractAbi.json'
@@ -7,6 +7,8 @@ import contractABInft from './SmartContractAbiNFT.json'
 
 const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS || ''
 const contractAddressNFT = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS_NFT || ''
+const BlockExplorer = process.env.NEXT_PUBLIC_BLOCK_EXPLORER || ''
+const URLRPCDefault = process.env.NEXT_PUBLIC_RPC_URL || ''
 
 declare global {
   interface Window {
@@ -60,9 +62,7 @@ const Hero = () => {
 
   const fetchMessages = async () => {
     try {
-      const provider = new ethers.JsonRpcProvider(
-        'https://dream-rpc.somnia.network',
-      )
+      const provider = new ethers.JsonRpcProvider(URLRPCDefault)
       const contract = new ethers.Contract(
         contractAddress,
         contractABI,
@@ -85,9 +85,7 @@ const Hero = () => {
 
   const fetchFee = async () => {
     try {
-      const provider = new ethers.JsonRpcProvider(
-        'https://dream-rpc.somnia.network',
-      )
+      const provider = new ethers.JsonRpcProvider(URLRPCDefault)
       const contract = new ethers.Contract(
         contractAddress,
         contractABI,
@@ -102,9 +100,7 @@ const Hero = () => {
 
   const fetchNFTFee = async () => {
     try {
-      const provider = new ethers.JsonRpcProvider(
-        'https://dream-rpc.somnia.network',
-      )
+      const provider = new ethers.JsonRpcProvider(URLRPCDefault)
       const contract = new ethers.Contract(
         contractAddressNFT,
         contractABInft,
@@ -194,7 +190,7 @@ const Hero = () => {
         await tx.wait()
         setMessage('')
         fetchMessages()
-        const txUrl = `https://shannon-explorer.somnia.network/tx/${tx.hash}`
+        const txUrl = `${BlockExplorer}/tx/${tx.hash}`
         showSuccess(
           'Blast a Message successful! Click here to view details.',
           txUrl,
@@ -256,7 +252,7 @@ const Hero = () => {
         })
         await tx.wait()
         fetchMessages()
-        const txUrl = `https://shannon-explorer.somnia.network/tx/${tx.hash}`
+        const txUrl = `${BlockExplorer}/tx/${tx.hash}`
         showSuccess(
           'Pop a Mint successfully! Click here to view details.',
           txUrl,
