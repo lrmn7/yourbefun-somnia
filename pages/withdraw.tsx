@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { ethers, BrowserProvider, Contract } from 'ethers'
 import contractABI from './Withdraw/SmartContractAbiFlip.json'
 import styles from './Withdraw/styles.module.scss'
-
+import { useAccount } from 'wagmi'
 const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS_FLIPGAME || ''
 
 declare global {
@@ -21,6 +21,7 @@ const Withdraw = () => {
   >(null)
   const [contractBalance, setContractBalance] = useState<string | null>(null)
   const [isProcessing, setIsProcessing] = useState<boolean>(false)
+    const { isConnected } = useAccount()
 
   useEffect(() => {
     if (window.ethereum && window.ethereum.selectedAddress) {
@@ -89,7 +90,7 @@ const Withdraw = () => {
   }, [provider, popupMessage])
 
   const handleWithdraw = async (percentage: number) => {
-    if (!account || !provider || !contract) {
+    if (!account || !provider || !contract || !isConnected) {
       setPopupMessage('Please connect your wallet first')
       return
     }
