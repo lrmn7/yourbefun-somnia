@@ -127,7 +127,6 @@ const Withdraw = () => {
       <div className={styles.somflipContainer}>
         <h2 className={styles.header}>YourBeFun - FlipGame Withdraw</h2>
 
-        {/* Withdraw Section */}
         <div className={styles.withdrawContainer}>
           <div className={styles.betSelection}>
             {['25%', '50%', '70%', '100%'].map((percentStr) => {
@@ -147,7 +146,6 @@ const Withdraw = () => {
             })}
           </div>
 
-          {/* Tampilkan saldo kontrak jika tersedia */}
           {contractBalance && (
             <p className={styles.contractBalance}>
               Contract Balance: {parseFloat(contractBalance).toFixed(4)} STT
@@ -155,7 +153,6 @@ const Withdraw = () => {
           )}
         </div>
 
-        {/* Popup Notifikasi */}
         {popupMessage && (
           <div className={styles.popupOverlay}>
             <div className={styles.popupContent}>
