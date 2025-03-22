@@ -51,7 +51,9 @@ const Hero = () => {
   const connectWallet = async () => {
     if (window.ethereum) {
       const provider = new ethers.BrowserProvider(window.ethereum)
-      const accounts = await window.ethereum.request({ method: 'eth_accounts' })
+      const accounts = await window.ethereum.request({
+        method: 'eth_accounts',
+      })
 
       if (accounts.length > 0) {
         const signer = await provider.getSigner()
@@ -336,6 +338,7 @@ const Hero = () => {
           >
             {isProcessingMessage ? 'Processing...' : 'Blast a Message'}
           </button>
+
           <button
             onClick={checkBalanceAndMintNFT}
             className={styles.funMessageButton}

@@ -13,7 +13,9 @@ const Navbar = () => {
           src={logo}
           alt="Logo"
           width={40}
-          onClick={() => window.open('https://somnia.network/', '_blank')}
+          onClick={() =>
+            window.open('https://testnet.somnia.network/', '_blank')
+          }
         />
       </div>
 
@@ -62,11 +64,11 @@ const Navbar = () => {
                 {connected && (
                   <button
                     onClick={() =>
-                      window.open('https://testnet.somnia.network/', '_blank')
+                      window.open('https://mint.yourbe.fun', '_blank')
                     }
                     className={`${styles.connectButton} ${styles.hideOnMobile}`}
                   >
-                    Explorer Somnia
+                    Fun Mint
                   </button>
                 )}
               </>
