@@ -6,6 +6,7 @@
 
   .logoContainer {
     display: flex;
+    margin-top: 30px; /* Memberikan jarak lebih ke bawah dari atas */
     align-items: center;
 
     img {
@@ -33,6 +34,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-top: 30px; /* Memberikan jarak lebih ke bawah dari atas */
     margin-left: calc(-250px / 2);
 
     @media (max-width: 922px) {
@@ -78,4 +80,28 @@
   .hideOnMobile {
     display: none !important;
   }
+}
+
+.alertContainer {
+  position: absolute;
+  padding-top: 50px; /* Memberikan jarak tambahan antara alert dan elemen navbar lainnya */
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  z-index: 1000;
+  width: auto;
+  max-width: 90%;
+}
+
+
+.githubLink {
+  color: #ffffff;
+  transition: 0.3s;
+  text-decoration: underline;
+}
+
+.githubLink:hover {
+  color: #a7acb3;
 }

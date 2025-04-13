@@ -8,6 +8,22 @@ import twitter from './assets/twitter.svg'
 const Navbar = () => {
   return (
     <div className={styles.container}>
+      {/* Alert Section */}
+      <div className={styles.alertContainer}>
+        <span>
+          ⚠️ Built on Somnia Network (Testnet). No real assets involved. Check{' '}
+          <a
+            href="https://github.com/lrmn7/yourbefun-somnia"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.githubLink}
+          >
+            GitHub Repository
+          </a>{' '}
+          for security details.
+        </span>
+      </div>
+
       <div className={`${styles.logoContainer} ${styles.hideOnMobile}`}>
         <Image
           src={logo}
