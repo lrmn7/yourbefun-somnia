@@ -6,7 +6,7 @@
 
   .logoContainer {
     display: flex;
-    margin-top: 30px; /* Memberikan jarak lebih ke bawah dari atas */
+    margin-top: 30px;
     align-items: center;
 
     img {
@@ -34,7 +34,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-top: 30px; /* Memberikan jarak lebih ke bawah dari atas */
+    margin-top: 30px;
     margin-left: calc(-250px / 2);
 
     @media (max-width: 922px) {
@@ -84,7 +84,7 @@
 
 .alertContainer {
   position: absolute;
-  padding-top: 50px; /* Memberikan jarak tambahan antara alert dan elemen navbar lainnya */
+  padding-top: 50px;
   left: 50%;
   transform: translateX(-50%);
   padding: 10px;
@@ -95,6 +95,11 @@
   max-width: 90%;
 }
 
+@media (max-width: 768px) {
+  .alertContainer {
+    display: none;
+  }
+}
 
 .githubLink {
   color: #ffffff;
